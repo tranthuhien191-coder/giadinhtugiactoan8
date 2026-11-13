@@ -1,0 +1,4111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gia đình Tứ giác – Ôn tập Chương III Toán 8 | Trần Thị Thu Hiền - GV Trường THCS Giồng Ông Tố</title>
+  <style>
+    :root {
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-light: #e2e8f0;
+      --blue-primary: #2563eb;
+      --blue-dark: #1e3a8a;
+      --emerald-primary: #059669;
+      --amber-primary: #d97706;
+      --indigo-primary: #4f46e5;
+      --purple-primary: #7e22ce;
+      --rose-primary: #e11d48;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    button, select, input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Thanh điều hướng (Navbar) */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, #0f172a 0%, #172554 50%, #0f172a 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(59, 130, 246, 0.22);
+      border: 1px solid rgba(96, 165, 250, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #93c5fd;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 11.5px;
+      color: #fde68a;
+      font-weight: 600;
+      display: block;
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      padding: 7px 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .nav-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.5);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .score-pill {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid #334155;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fcd34d;
+    }
+
+    .score-pill span {
+      color: #ffffff;
+    }
+
+    .btn-qr {
+      background: #d97706;
+      color: #ffffff;
+      padding: 7px 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-qr:hover {
+      background: #b45309;
+    }
+
+    .btn-guide {
+      background: #059669;
+      color: #ffffff;
+      padding: 7px 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-guide:hover {
+      background: #047857;
+    }
+
+    .btn-download {
+      background: #334155;
+      border: 1px solid #475569;
+      color: #f8fafc;
+      padding: 7px 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-download:hover {
+      background: #475569;
+    }
+
+    .main-container {
+      flex: 1;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .screen-section {
+      display: none;
+      animation: fadeIn 0.28s ease-out;
+    }
+
+    .screen-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .animate-shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    /* =====================================================================
+       MÀN HÌNH 1: TRANG CHỦ
+       ===================================================================== */
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 46px 32px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+      margin-bottom: 28px;
+    }
+
+    .hero-bg-svg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      opacity: 0.14;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4.2vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      margin-bottom: 26px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary-lg {
+      background: #3b82f6;
+      color: #ffffff;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary-lg:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .btn-amber-lg {
+      background: #d97706;
+      color: #ffffff;
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-amber-lg:hover {
+      background: #b45309;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-lg {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary-lg:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .cards-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 20px;
+    }
+
+    .stage-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+      border-color: #60a5fa;
+    }
+
+    .stage-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .stage-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .stage-title {
+      font-size: 19px;
+      font-weight: 800;
+      margin: 4px 0 8px;
+      color: #0f172a;
+    }
+
+    .stage-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .stage-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .btn-next-stage {
+      padding: 10px 18px;
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      transition: opacity 0.2s;
+    }
+
+    .btn-next-stage:hover {
+      opacity: 0.9;
+    }
+
+    /* =====================================================================
+       MÀN HÌNH 2: 1. KHỞI ĐỘNG (SƠ ĐỒ GIA ĐÌNH TỨ GIÁC 60% / 40%)
+       ===================================================================== */
+    .part1-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .part1-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tree-box {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      overflow-x: auto;
+    }
+
+    .tree-canvas-inner {
+      min-width: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    .tree-shape-btn {
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tree-shape-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .tree-shape-btn.active-shape {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.65));
+    }
+
+    .tree-connector-row {
+      width: 100%;
+      max-width: 560px;
+      height: 64px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .connector-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .key-pill {
+      position: relative;
+      z-index: 5;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .key-pill:hover {
+      transform: scale(1.05);
+    }
+
+    .tree-tier-2 {
+      width: 100%;
+      max-width: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .tree-sub-branch {
+      width: 100%;
+      max-width: 600px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .tree-sub-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .detail-panel {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      position: sticky;
+      top: 76px;
+    }
+
+    /* =====================================================================
+       MÀN HÌNH 3: 2. KHÁM PHÁ (CANVAS 58% / THỬ THÁCH 42%)
+       ===================================================================== */
+    .part2-layout {
+      display: grid;
+      grid-template-columns: 58fr 42fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .part2-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 18px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .status-badge {
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+    }
+
+    .canvas-wrapper {
+      width: 100%;
+      height: 420px;
+      background: #f8fafc;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #geoCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    #geoCanvas:active {
+      cursor: grabbing;
+    }
+
+    .canvas-tip {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.94);
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 11.5px;
+      color: #475569;
+      pointer-events: none;
+    }
+
+    .preset-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .preset-btn {
+      padding: 7px 12px;
+      border-radius: 9px;
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: transform 0.15s;
+    }
+
+    .preset-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .lab-sidebar {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .lab-task-box {
+      padding: 14px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1.5px solid #a7f3d0;
+    }
+
+    .lab-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+    }
+
+    .lab-num-btn {
+      padding: 5px 0;
+      border-radius: 7px;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      transition: all 0.15s;
+    }
+
+    .lab-num-btn.active {
+      background: #059669;
+      color: #ffffff;
+      border-color: #047857;
+    }
+
+    .lab-num-btn.done-ok {
+      background: #d1fae5;
+      color: #065f46;
+      border-color: #34d399;
+    }
+
+    .lab-num-btn.done-err {
+      background: #ffe4e6;
+      color: #9f1239;
+      border-color: #fda4af;
+    }
+
+    .lab-opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+      transition: all 0.15s;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .lab-opt-btn:hover {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+
+    .lab-opt-btn.opt-correct {
+      background: #d1fae5;
+      border-color: #059669;
+      color: #064e3b;
+    }
+
+    .lab-opt-btn.opt-wrong {
+      background: #ffe4e6;
+      border-color: #e11d48;
+      color: #881337;
+    }
+
+    /* =====================================================================
+       MÀN HÌNH 4: 3. TĂNG TỐC (5 NHÓM HÌNH & 15 THẺ - 40 ĐIỂM)
+       ===================================================================== */
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .drop-zone {
+      min-height: 220px;
+      border-radius: 20px;
+      padding: 14px;
+      border: 2px dashed;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.15s, background-color 0.2s;
+    }
+
+    .drop-zone:hover {
+      transform: translateY(-2px);
+    }
+
+    .zone-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .zone-items {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cards-pool-box {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .cards-pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .drag-card {
+      padding: 14px;
+      border-radius: 16px;
+      border: 2px solid #e2e8f0;
+      background: #f8fafc;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .drag-card:hover {
+      border-color: #60a5fa;
+      background: #eff6ff;
+    }
+
+    .drag-card.selected {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #78350f;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+    }
+
+    /* =====================================================================
+       MÀN HÌNH 5 & 6: 4. VỀ ĐÍCH (30 CÂU PHÂN HÓA) & BẢNG TỔNG KẾT
+       ===================================================================== */
+    .quiz-filter-bar {
+      max-width: 960px;
+      margin: 0 auto 16px;
+      background: #ffffff;
+      padding: 14px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      transition: all 0.15s;
+    }
+
+    .filter-pill.active {
+      background: #7e22ce;
+      color: #ffffff;
+      border-color: #6b21a8;
+    }
+
+    .quiz-jump-grid {
+      max-width: 960px;
+      margin: 0 auto 20px;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .q-jump-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #f8fafc;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .q-jump-btn.q-ok {
+      background: #d1fae5;
+      color: #065f46;
+      border-color: #10b981;
+    }
+
+    .q-jump-btn.q-err {
+      background: #ffe4e6;
+      color: #9f1239;
+      border-color: #f43f5e;
+    }
+
+    .quiz-list {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quiz-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      scroll-margin-top: 86px;
+    }
+
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quiz-opt-choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e293b;
+      transition: all 0.15s;
+    }
+
+    .quiz-opt-choice:hover:not(:disabled) {
+      background: #faf5ff;
+      border-color: #a855f7;
+    }
+
+    .quiz-opt-choice:disabled {
+      cursor: default;
+    }
+
+    .quiz-opt-choice.chosen-correct {
+      background: #d1fae5;
+      border-color: #059669;
+      color: #064e3b;
+    }
+
+    .quiz-opt-choice.chosen-wrong {
+      background: #ffe4e6;
+      border-color: #e11d48;
+      color: #881337;
+    }
+
+    .summary-banner {
+      max-width: 960px;
+      margin: 28px auto 0;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(90deg, #0f172a, #1e3a8a);
+      color: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .summary-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px 28px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      text-align: center;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: 24px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .qr-canvas-frame {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 20px;
+      border: 2px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      margin: 12px auto;
+    }
+
+
+    /* =====================================================================
+       TỐI ƯU HÓA HIỂN THỊ TRÊN ĐIỆN THOẠI DI ĐỘNG (MOBILE RESPONSIVE <= 768px)
+       ===================================================================== */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+      .brand {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+      }
+      .brand-title {
+        font-size: 13.5px;
+      }
+      .brand-sub {
+        font-size: 10.5px;
+        line-height: 1.25;
+      }
+      .nav-tabs {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+      }
+      .nav-btn {
+        padding: 6px 4px;
+        font-size: 11px;
+        justify-content: center;
+        text-align: center;
+        border-radius: 7px;
+      }
+      .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+        gap: 6px;
+      }
+      .score-pill {
+        font-size: 11px;
+        padding: 4px 10px;
+      }
+      .btn-qr, .btn-guide, .btn-download {
+        padding: 5px 9px;
+        font-size: 11.5px;
+      }
+      .main-container {
+        padding: 12px 10px 28px;
+      }
+      /* Trang chủ thu gọn */
+      .hero-banner {
+        padding: 20px 16px;
+        border-radius: 18px;
+        margin-bottom: 16px;
+      }
+      .hero-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+      }
+      .hero-buttons {
+        gap: 8px;
+      }
+      .btn-primary-lg, .btn-amber-lg, .btn-secondary-lg {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 13.5px;
+        border-radius: 11px;
+      }
+      .cards-grid-4 {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .stage-card {
+        padding: 14px;
+        border-radius: 16px;
+      }
+      .stage-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+      }
+      .stage-tag {
+        font-size: 9.5px;
+      }
+      .stage-title {
+        font-size: 15px;
+        margin: 2px 0 4px;
+      }
+      .stage-desc {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .stage-footer {
+        margin-top: 10px;
+        padding-top: 8px;
+        font-size: 11.5px;
+      }
+      .section-header {
+        margin-bottom: 12px;
+        gap: 8px;
+      }
+      .section-title {
+        font-size: 18px;
+      }
+      .section-subtitle {
+        font-size: 12.5px;
+      }
+      .btn-next-stage {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+      /* Chặng 1: Khởi động - Sơ đồ co giãn vừa màn hình điện thoại, không tràn ngang */
+      .part1-layout {
+        gap: 12px;
+      }
+      .tree-box {
+        padding: 10px 6px;
+        border-radius: 16px;
+        overflow-x: hidden;
+      }
+      .tree-canvas-inner {
+        min-width: 100%;
+        width: 100%;
+        padding: 2px 0;
+      }
+      .tree-canvas-inner svg:not(.connector-svg) {
+        max-width: 100%;
+        height: auto;
+      }
+      #node-tugiac svg { width: 132px; }
+      #node-hinhthangcan svg { width: 144px; }
+      #node-hinhbinhhanh svg { width: 150px; }
+      #node-hinhchunhat svg { width: 112px; }
+      #node-hinhthoi svg { width: 112px; }
+      #node-hinhvuong svg { width: 92px; }
+      .tree-connector-row {
+        height: 46px;
+        padding: 0 6px;
+      }
+      .key-pill {
+        padding: 4px 8px;
+        font-size: 10px;
+      }
+      .tree-tier-2 {
+        gap: 6px;
+      }
+      .detail-panel {
+        position: static;
+        padding: 16px;
+        border-radius: 18px;
+      }
+      /* Chặng 2: Khám phá - Khung vẽ gọn trong tầm nhìn điện thoại */
+      .part2-layout {
+        gap: 12px;
+      }
+      .canvas-card {
+        padding: 12px;
+        border-radius: 18px;
+      }
+      .canvas-toolbar {
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        gap: 6px;
+      }
+      .status-badge {
+        font-size: 11.5px;
+        padding: 4px 10px;
+      }
+      .canvas-wrapper {
+        height: 275px;
+        border-radius: 12px;
+      }
+      .canvas-tip {
+        font-size: 10px;
+        padding: 4px 7px;
+        bottom: 6px;
+        left: 6px;
+        right: 6px;
+      }
+      .preset-row {
+        margin-top: 10px;
+        gap: 5px;
+      }
+      .preset-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+      .lab-sidebar {
+        padding: 14px;
+        border-radius: 18px;
+        gap: 10px;
+      }
+      .lab-nav-grid {
+        grid-template-columns: repeat(10, 1fr);
+        gap: 3px;
+      }
+      .lab-num-btn {
+        font-size: 10.5px;
+        padding: 4px 0;
+      }
+      .lab-task-box {
+        padding: 10px;
+      }
+      .lab-opt-btn {
+        padding: 8px 10px;
+        font-size: 12.5px;
+      }
+      /* Chặng 3: Tăng tốc - 5 nhóm hiển thị gọn 2 cột trên điện thoại, không bị trôi dài */
+      .zones-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .zones-grid .drop-zone:last-child {
+        grid-column: span 2;
+      }
+      .drop-zone {
+        min-height: 115px;
+        padding: 10px;
+        border-radius: 14px;
+      }
+      .zone-header {
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+      }
+      .zone-header h3 {
+        font-size: 11.5px !important;
+      }
+      .cards-pool-box {
+        padding: 12px;
+        border-radius: 16px;
+      }
+      .cards-pool-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .drag-card {
+        padding: 10px 12px;
+        font-size: 12.5px;
+        border-radius: 12px;
+      }
+      /* Chặng 4: Về đích */
+      .quiz-filter-bar {
+        padding: 10px 12px;
+        border-radius: 14px;
+      }
+      .filter-pill {
+        font-size: 11px;
+        padding: 5px 9px;
+      }
+      .quiz-card {
+        padding: 15px;
+        border-radius: 16px;
+      }
+      .quiz-options-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .quiz-opt-choice {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .summary-card {
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- THANH ĐIỀU HƯỚNG TRÊN CÙNG (NAVBAR) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" id="brand-home-btn">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="4 6 18 4 20 18 6 20 4 6"></polygon>
+            <line x1="4" y1="6" x2="20" y2="18" stroke-dasharray="2 2"></line>
+            <line x1="18" y1="4" x2="6" y2="20" stroke-dasharray="2 2"></line>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-title">GIA ĐÌNH TỨ GIÁC</span>
+          <span class="brand-sub">Chương III • Toán 8 | Trần Thị Thu Hiền - GV Trường THCS Giồng Ông Tố</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" id="main-nav-tabs">
+        <button type="button" class="nav-btn active" data-screen="home">Trang chủ</button>
+        <button type="button" class="nav-btn" data-screen="part1">1. Khởi động</button>
+        <button type="button" class="nav-btn" data-screen="part2">2. Khám phá</button>
+        <button type="button" class="nav-btn" data-screen="part3">3. Tăng tốc</button>
+        <button type="button" class="nav-btn" data-screen="part4">4. Về đích</button>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="score-pill">Điểm: <span id="header-score">0</span>/100</div>
+        <button type="button" class="btn-qr" id="open-qr-btn">📱 Mã QR</button>
+        <button type="button" class="btn-guide" id="open-guide-btn">📖 Hướng dẫn</button>
+        <button type="button" class="btn-download" id="download-html-btn" title="Tải toàn bộ file HTML về máy để dùng offline">💾 Tải file HTML</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <main class="main-container">
+
+    <!-- =====================================================================
+         MÀN HÌNH 1: TRANG CHỦ (HOME)
+         ===================================================================== -->
+    <section id="screen-home" class="screen-section active">
+      <div class="hero-banner">
+        <svg class="hero-bg-svg" viewBox="0 0 400 400" fill="none">
+          <polygon points="80,40 340,70 300,330 40,290" stroke="white" stroke-width="4"/>
+          <line x1="80" y1="40" x2="300" y2="330" stroke="white" stroke-width="2" stroke-dasharray="8 8"/>
+          <line x1="340" y1="70" x2="40" y2="290" stroke="white" stroke-width="2" stroke-dasharray="8 8"/>
+          <circle cx="190" cy="185" r="8" fill="white"/>
+        </svg>
+
+        <div class="hero-content">
+          <h1 class="hero-title">ÔN TẬP CHƯƠNG III: TỨ GIÁC</h1>
+          <div class="hero-buttons">
+            <button type="button" class="btn-primary-lg" data-screen="part1">
+              <span>🚀 Bắt đầu 1. Khởi động</span>
+            </button>
+            <button type="button" class="btn-amber-lg" id="hero-qr-btn">
+              <span>📱 Mã QR học sinh</span>
+            </button>
+            <button type="button" class="btn-secondary-lg" id="hero-guide-btn">
+              <span>📖 Hướng dẫn sử dụng</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid-4">
+        <div class="stage-card" data-screen="part1">
+          <div>
+            <div class="stage-icon" style="background:#dbeafe; color:#2563eb;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 3v6m0 0l-6 6m6-6l6 6M6 15v6m12-6v6"/></svg>
+            </div>
+            <span class="stage-tag" style="color:#2563eb;">Chặng 1 • Hệ thống hóa</span>
+            <h2 class="stage-title">1. Khởi động</h2>
+            <p class="stage-desc">Sơ đồ tương tác Gia đình tứ giác với hình vẽ chuẩn xác, định nghĩa, tính chất và dấu hiệu nhận biết đầy đủ.</p>
+          </div>
+          <div class="stage-footer" style="color:#2563eb;">
+            <span>Khám phá sơ đồ</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="stage-card" data-screen="part2">
+          <div>
+            <div class="stage-icon" style="background:#d1fae5; color:#059669;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="5 4 19 4 21 20 3 20 5 4"/><circle cx="5" cy="4" r="2" fill="currentColor"/><circle cx="19" cy="4" r="2" fill="currentColor"/></svg>
+            </div>
+            <span class="stage-tag" style="color:#059669;">Chặng 2 • Trực quan hóa</span>
+            <h2 class="stage-title">2. Khám phá</h2>
+            <p class="stage-desc">20 thử thách tương tác kéo thả trực tiếp các đỉnh của mô hình hình bình hành động để kiểm chứng tính chất.</p>
+          </div>
+          <div class="stage-footer" style="color:#059669;">
+            <span>Khám phá 20 thử thách</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="stage-card" data-screen="part3">
+          <div>
+            <div class="stage-icon" style="background:#fef3c7; color:#d97706;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+            </div>
+            <span class="stage-tag" style="color:#d97706;">Chặng 3 • Luyện tập tương tác</span>
+            <h2 class="stage-title">3. Tăng tốc</h2>
+            <p class="stage-desc">Trò chơi phân loại 15 thẻ mệnh đề vào 5 nhóm tứ giác đặc trưng (Tối đa 40 điểm).</p>
+          </div>
+          <div class="stage-footer" style="color:#d97706;">
+            <span>Thử sức phân loại (40đ)</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="stage-card" data-screen="part4">
+          <div>
+            <div class="stage-icon" style="background:#f3e8ff; color:#7e22ce;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="stage-tag" style="color:#7e22ce;">Chặng 4 • Vận dụng & Tổng kết</span>
+            <h2 class="stage-title">4. Về đích</h2>
+            <p class="stage-desc">30 câu hỏi vận dụng phân hóa 4 mức độ có lời giải chi tiết và Bảng tổng kết 100 điểm.</p>
+          </div>
+          <div class="stage-footer" style="color:#7e22ce;">
+            <span>Làm bài 30 câu (60đ)</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         MÀN HÌNH 2: 1. KHỞI ĐỘNG – SƠ ĐỒ GIA ĐÌNH TỨ GIÁC (60% / 40%)
+         ===================================================================== -->
+    <section id="screen-part1" class="screen-section">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker" style="color:#2563eb;">Chặng 1 • Khởi động</span>
+          <h2 class="section-title">Sơ đồ tương tác: Gia đình tứ giác</h2>
+          <p class="section-subtitle">Bấm vào từng <strong>hình tứ giác</strong> để xem định nghĩa, tính chất hoặc bấm vào <strong>nút chìa khóa 🔑</strong> trên mũi tên để xem dấu hiệu nhận biết.</p>
+        </div>
+        <button type="button" class="btn-next-stage" style="background:#2563eb;" data-screen="part2">Sang 2. Khám phá →</button>
+      </div>
+
+      <div class="part1-layout">
+        <!-- Cột trái (60%): Sơ đồ SVG sắc nét, bên trong mỗi hình chỉ ghi tên loại tứ giác -->
+        <div class="tree-box">
+          <div class="tree-canvas-inner">
+            <!-- Tầng 1: TỨ GIÁC -->
+            <div id="node-tugiac" class="tree-shape-btn" data-shape="tugiac" title="Bấm để xem Tứ giác">
+              <svg width="190" height="84" viewBox="0 0 190 84">
+                <polygon points="24,16 164,10 176,72 14,68" fill="#1e293b" stroke="#0f172a" stroke-width="2.5"/>
+                <text x="95" y="47" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">TỨ GIÁC</text>
+              </svg>
+            </div>
+
+            <!-- Nhánh nối Tầng 1 sang Tầng 2 -->
+            <div class="tree-connector-row">
+              <svg class="connector-svg" viewBox="0 0 560 64" preserveAspectRatio="none">
+                <path d="M 280 0 L 280 28 L 130 28 L 130 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+                <path d="M 280 0 L 280 28 L 410 28 L 410 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+              </svg>
+              <button type="button" class="key-pill" data-arrow="tugiac_htc" style="background:#fef3c7; border:1px solid #f59e0b; color:#92400e;">
+                🔑 Hình thang cân
+              </button>
+              <button type="button" class="key-pill" data-arrow="tugiac_hbh" style="background:#dbeafe; border:1px solid #3b82f6; color:#1e40af;">
+                🔑 Hình bình hành
+              </button>
+            </div>
+
+            <!-- Tầng 2: HÌNH THANG CÂN & HÌNH BÌNH HÀNH -->
+            <div class="tree-tier-2">
+              <div id="node-hinhthangcan" class="tree-shape-btn" data-shape="hinhthangcan" title="Bấm để xem Hình thang cân">
+                <svg width="210" height="84" viewBox="0 0 210 84">
+                  <polygon points="48,14 162,14 194,70 16,70" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+                  <line x1="28" y1="40" x2="36" y2="44" stroke="#b45309" stroke-width="2.2"/>
+                  <line x1="182" y1="40" x2="174" y2="44" stroke="#b45309" stroke-width="2.2"/>
+                  <text x="105" y="48" text-anchor="middle" fill="#78350f" font-size="13.5" font-weight="800">HÌNH THANG CÂN</text>
+                </svg>
+              </div>
+
+              <div id="node-hinhbinhhanh" class="tree-shape-btn active-shape" data-shape="hinhbinhhanh" title="Bấm để xem Hình bình hành">
+                <svg width="220" height="84" viewBox="0 0 220 84">
+                  <polygon points="46,14 202,14 174,70 18,70" fill="#2563eb" stroke="#1d4ed8" stroke-width="2.5"/>
+                  <text x="110" y="47" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="800">HÌNH BÌNH HÀNH</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Nhánh rẽ từ Hình bình hành sang Hình chữ nhật & Hình thoi -->
+            <div class="tree-sub-branch">
+              <div></div>
+              <div class="tree-sub-inner">
+                <div class="tree-connector-row" style="max-width:390px;">
+                  <svg class="connector-svg" viewBox="0 0 390 64" preserveAspectRatio="none">
+                    <path d="M 195 0 L 195 28 L 95 28 L 95 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+                    <path d="M 195 0 L 195 28 L 295 28 L 295 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+                  </svg>
+                  <button type="button" class="key-pill" data-arrow="hbh_hcn" style="background:#e0e7ff; border:1px solid #6366f1; color:#3730a3;">
+                    🔑 Dấu hiệu
+                  </button>
+                  <button type="button" class="key-pill" data-arrow="hbh_hthoi" style="background:#d1fae5; border:1px solid #10b981; color:#065f46;">
+                    🔑 Dấu hiệu
+                  </button>
+                </div>
+
+                <!-- Tầng 3: HÌNH CHỮ NHẬT & HÌNH THOI -->
+                <div style="width:100%; max-width:410px; display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:center; justify-items:center;">
+                  <div id="node-hinhchunhat" class="tree-shape-btn" data-shape="hinhchunhat" title="Bấm để xem Hình chữ nhật">
+                    <svg width="184" height="82" viewBox="0 0 184 82">
+                      <rect x="12" y="14" width="160" height="54" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2.5"/>
+                      <polyline points="12,24 22,24 22,14" fill="none" stroke="#dc2626" stroke-width="1.8"/>
+                      <polyline points="162,14 162,24 172,24" fill="none" stroke="#dc2626" stroke-width="1.8"/>
+                      <polyline points="12,58 22,58 22,68" fill="none" stroke="#dc2626" stroke-width="1.8"/>
+                      <polyline points="162,68 162,58 172,58" fill="none" stroke="#dc2626" stroke-width="1.8"/>
+                      <text x="92" y="46" text-anchor="middle" fill="#312e81" font-size="13" font-weight="800">HÌNH CHỮ NHẬT</text>
+                    </svg>
+                  </div>
+
+                  <div id="node-hinhthoi" class="tree-shape-btn" data-shape="hinhthoi" title="Bấm để xem Hình thoi">
+                    <svg width="184" height="94" viewBox="0 0 184 94">
+                      <polygon points="92,8 172,47 92,86 12,47" fill="#d1fae5" stroke="#059669" stroke-width="2.5"/>
+                      <line x1="48" y1="24" x2="54" y2="31" stroke="#047857" stroke-width="2"/>
+                      <line x1="136" y1="24" x2="130" y2="31" stroke="#047857" stroke-width="2"/>
+                      <line x1="48" y1="70" x2="54" y2="63" stroke="#047857" stroke-width="2"/>
+                      <line x1="136" y1="70" x2="130" y2="63" stroke="#047857" stroke-width="2"/>
+                      <text x="92" y="51" text-anchor="middle" fill="#064e3b" font-size="13" font-weight="800">HÌNH THOI</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Nhánh hội tụ sang Hình vuông -->
+                <div class="tree-connector-row" style="max-width:390px;">
+                  <svg class="connector-svg" viewBox="0 0 390 64" preserveAspectRatio="none">
+                    <path d="M 95 0 L 95 34 L 195 34 L 195 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+                    <path d="M 295 0 L 295 34 L 195 34 L 195 64" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+                  </svg>
+                  <button type="button" class="key-pill" data-arrow="hcn_hv" style="background:#f3e8ff; border:1px solid #9333ea; color:#6b21a8;">
+                    🔑 Dấu hiệu
+                  </button>
+                  <button type="button" class="key-pill" data-arrow="hthoi_hv" style="background:#f3e8ff; border:1px solid #9333ea; color:#6b21a8;">
+                    🔑 Dấu hiệu
+                  </button>
+                </div>
+
+                <!-- Tầng 4: HÌNH VUÔNG -->
+                <div id="node-hinhvuong" class="tree-shape-btn" data-shape="hinhvuong" title="Bấm để xem Hình vuông">
+                  <svg width="134" height="114" viewBox="0 0 134 114">
+                    <rect x="19" y="9" width="96" height="96" fill="#7e22ce" stroke="#581c87" stroke-width="2.5"/>
+                    <polyline points="19,20 30,20 30,9" fill="none" stroke="#fde047" stroke-width="1.8"/>
+                    <polyline points="104,9 104,20 115,20" fill="none" stroke="#fde047" stroke-width="1.8"/>
+                    <polyline points="19,94 30,94 30,105" fill="none" stroke="#fde047" stroke-width="1.8"/>
+                    <polyline points="104,105 104,94 115,94" fill="none" stroke="#fde047" stroke-width="1.8"/>
+                    <line x1="67" y1="4" x2="67" y2="14" stroke="#fde047" stroke-width="2"/>
+                    <line x1="67" y1="100" x2="67" y2="110" stroke="#fde047" stroke-width="2"/>
+                    <line x1="14" y1="57" x2="24" y2="57" stroke="#fde047" stroke-width="2"/>
+                    <line x1="110" y1="57" x2="120" y2="57" stroke="#fde047" stroke-width="2"/>
+                    <text x="67" y="61" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800">HÌNH VUÔNG</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột phải (40%): Bảng chi tiết bằng văn bản đầy đủ -->
+        <div id="part1-detail-panel" class="detail-panel"></div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         MÀN HÌNH 3: 2. KHÁM PHÁ – MÔ HÌNH ĐỘNG & 20 THỬ THÁCH (58% / 42%)
+         ===================================================================== -->
+    <section id="screen-part2" class="screen-section">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker" style="color:#059669;">Chặng 2 • Khám phá (20 Thử thách trực quan)</span>
+          <h2 class="section-title">Mô hình động: Khám phá biến đổi tứ giác</h2>
+          <p class="section-subtitle">Dùng chuột hoặc ngón tay <strong>kéo các đỉnh màu xanh (A, B, D)</strong> trên bảng vẽ để quan sát sự thay đổi số đo và hình dạng.</p>
+        </div>
+        <button type="button" class="btn-next-stage" style="background:#059669;" data-screen="part3">Sang 3. Tăng tốc →</button>
+      </div>
+
+      <div class="part2-layout">
+        <!-- Cột trái (58%): Canvas tương tác -->
+        <div class="canvas-card">
+          <div class="canvas-toolbar">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span style="font-size:12px; font-weight:700; color:#64748b; text-transform:uppercase;">Trạng thái:</span>
+              <span id="shape-status-badge" class="status-badge">Hình bình hành ABCD</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px; font-size:12.5px; font-weight:600; color:#475569;">
+              <label style="display:inline-flex; align-items:center; gap:6px; cursor:pointer;">
+                <input type="checkbox" id="chk-diagonals" checked>
+                <span>Hiện hai đường chéo</span>
+              </label>
+              <label style="display:inline-flex; align-items:center; gap:6px; cursor:pointer;">
+                <input type="checkbox" id="chk-measures" checked>
+                <span>Hiện góc tại giao điểm O</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="canvas-container" class="canvas-wrapper">
+            <canvas id="geoCanvas"></canvas>
+            <div class="canvas-tip">
+              💡 Mẹo: Kéo đỉnh <strong>A, B, D</strong> (tự động hít nhẹ tại góc ∠A = 90° và khi cạnh AB bằng cạnh AD)
+            </div>
+          </div>
+
+          <div class="preset-row">
+            <span style="font-size:12.5px; font-weight:700; color:#64748b;">Mẫu nhanh:</span>
+            <button type="button" class="preset-btn" style="background:#f1f5f9; color:#334155;" data-preset="parallelogram">↺ Hình bình hành</button>
+            <button type="button" class="preset-btn" style="background:#e0e7ff; color:#3730a3; border:1px solid #c7d2fe;" data-preset="rectangle">Hình chữ nhật</button>
+            <button type="button" class="preset-btn" style="background:#d1fae5; color:#065f46; border:1px solid #a7f3d0;" data-preset="rhombus">Hình thoi</button>
+            <button type="button" class="preset-btn" style="background:#f3e8ff; color:#6b21a8; border:1px solid #e9d5ff;" data-preset="square">👑 Hình vuông</button>
+          </div>
+        </div>
+
+        <!-- Cột phải (42%): Bộ điều hướng 20 Thử thách khám phá -->
+        <div class="lab-sidebar">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:10px; border-bottom:1px solid #f1f5f9;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:18px;">🔬</span>
+              <h3 style="font-size:16px; font-weight:800; color:#0f172a;">20 Thử thách khám phá</h3>
+            </div>
+            <span style="padding:3px 10px; border-radius:999px; background:#d1fae5; color:#065f46; font-size:12px; font-weight:800;">
+              Đúng: <span id="lab-correct-count">0</span>/20
+            </span>
+          </div>
+
+          <div class="lab-nav-grid" id="lab-nav-grid"></div>
+
+          <div id="lab-challenge-card" class="lab-task-box"></div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+            <button type="button" id="lab-prev-btn" style="flex:1; padding:9px 12px; border-radius:10px; background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; font-weight:700; font-size:13px;">
+              ← Câu trước
+            </button>
+            <button type="button" id="lab-next-btn" style="flex:1; padding:9px 12px; border-radius:10px; background:#059669; color:#ffffff; font-weight:700; font-size:13px;">
+              Câu tiếp →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         MÀN HÌNH 4: 3. TĂNG TỐC – PHÂN LOẠI 5 NHÓM HÌNH & 15 THẺ (40 ĐIỂM)
+         ===================================================================== -->
+    <section id="screen-part3" class="screen-section">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker" style="color:#d97706;">Chặng 3 • Tăng tốc (40 điểm)</span>
+          <h2 class="section-title">Phân loại tính chất và dấu hiệu nhận biết</h2>
+          <p class="section-subtitle"><strong>Kéo thả</strong> từng thẻ mệnh đề bên dưới vào đúng 1 trong 5 khung hình tương ứng (hoặc <strong>bấm chọn thẻ</strong> rồi bấm vào khung hình).</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="padding:8px 14px; border-radius:12px; background:#fef3c7; color:#78350f; font-weight:800; font-size:14px;">
+            Điểm Tăng tốc: <span id="part3-score">0</span>/40
+          </span>
+          <button type="button" id="reset-drag-btn" style="padding:8px 14px; border-radius:12px; background:#e2e8f0; color:#334155; font-weight:700; font-size:13.5px;">
+            ↺ Chơi lại
+          </button>
+        </div>
+      </div>
+
+      <div id="drag-toast" class="hidden" style="margin-bottom:16px; padding:14px 18px; border-radius:16px; border:1px solid; font-size:14px; font-weight:600; display:flex; align-items:center; justify-content:space-between;">
+        <span id="drag-toast-text"></span>
+        <button type="button" id="close-toast-btn" style="text-decoration:underline; font-size:12.5px; margin-left:16px;">Đóng</button>
+      </div>
+
+      <div class="zones-grid">
+        <div class="drop-zone" data-zone="hinhthangcan" style="background:rgba(254,243,199,0.55); border-color:#f59e0b;">
+          <div class="zone-header">
+            <h3 style="font-weight:800; color:#78350f; font-size:13.5px;">HÌNH THANG CÂN</h3>
+            <span id="count-hinhthangcan" style="font-size:12px; font-weight:800; padding:2px 8px; border-radius:999px; background:#fde68a; color:#78350f;">0/3</span>
+          </div>
+          <div id="zone-items-hinhthangcan" class="zone-items"></div>
+        </div>
+
+        <div class="drop-zone" data-zone="hinhbinhhanh" style="background:rgba(219,234,254,0.55); border-color:#3b82f6;">
+          <div class="zone-header">
+            <h3 style="font-weight:800; color:#1e3a8a; font-size:13.5px;">HÌNH BÌNH HÀNH</h3>
+            <span id="count-hinhbinhhanh" style="font-size:12px; font-weight:800; padding:2px 8px; border-radius:999px; background:#bfdbfe; color:#1e3a8a;">0/3</span>
+          </div>
+          <div id="zone-items-hinhbinhhanh" class="zone-items"></div>
+        </div>
+
+        <div class="drop-zone" data-zone="hinhchunhat" style="background:rgba(224,231,255,0.55); border-color:#6366f1;">
+          <div class="zone-header">
+            <h3 style="font-weight:800; color:#312e81; font-size:13.5px;">HÌNH CHỮ NHẬT</h3>
+            <span id="count-hinhchunhat" style="font-size:12px; font-weight:800; padding:2px 8px; border-radius:999px; background:#c7d2fe; color:#312e81;">0/3</span>
+          </div>
+          <div id="zone-items-hinhchunhat" class="zone-items"></div>
+        </div>
+
+        <div class="drop-zone" data-zone="hinhthoi" style="background:rgba(209,250,229,0.55); border-color:#10b981;">
+          <div class="zone-header">
+            <h3 style="font-weight:800; color:#064e3b; font-size:13.5px;">HÌNH THOI</h3>
+            <span id="count-hinhthoi" style="font-size:12px; font-weight:800; padding:2px 8px; border-radius:999px; background:#a7f3d0; color:#064e3b;">0/3</span>
+          </div>
+          <div id="zone-items-hinhthoi" class="zone-items"></div>
+        </div>
+
+        <div class="drop-zone" data-zone="hinhvuong" style="background:rgba(243,232,255,0.65); border-color:#9333ea;">
+          <div class="zone-header">
+            <h3 style="font-weight:800; color:#581c87; font-size:13.5px;">HÌNH VUÔNG</h3>
+            <span id="count-hinhvuong" style="font-size:12px; font-weight:800; padding:2px 8px; border-radius:999px; background:#e9d5ff; color:#581c87;">0/3</span>
+          </div>
+          <div id="zone-items-hinhvuong" class="zone-items"></div>
+        </div>
+      </div>
+
+      <div class="cards-pool-box">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <h4 style="font-weight:800; color:#334155; font-size:14px;">🗂️ Kho thẻ mệnh đề cần phân loại (Còn lại: <span id="remaining-cards-count">15</span> thẻ)</h4>
+          <span style="font-size:12px; color:#64748b;">Hoàn thành đủ 15 thẻ đạt tối đa 40 điểm</span>
+        </div>
+        <div id="cards-pool" class="cards-pool-grid"></div>
+      </div>
+
+      <div style="margin-top:24px; display:flex; justify-content:flex-end;">
+        <button type="button" class="btn-next-stage" style="background:#7e22ce;" data-screen="part4">Tiếp tục sang 4. Về đích →</button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         MÀN HÌNH 5: 4. VỀ ĐÍCH – 30 CÂU HỎI PHÂN HÓA 4 MỨC ĐỘ (60 ĐIỂM)
+         ===================================================================== -->
+    <section id="screen-part4" class="screen-section">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker" style="color:#7e22ce;">Chặng 4 • Về đích (60 điểm)</span>
+          <h2 class="section-title">Chinh phục 30 câu hỏi vận dụng tổng hợp</h2>
+          <p class="section-subtitle">Gồm 5 câu Nhận biết, 15 câu Thông hiểu, 5 câu Vận dụng và 5 câu Vận dụng cao (mỗi câu đúng được <strong>2 điểm</strong>).</p>
+        </div>
+        <div style="padding:8px 16px; border-radius:12px; background:#f3e8ff; color:#581c87; font-weight:800; font-size:14px;">
+          Điểm Về đích: <span id="part4-score">0</span>/60 (<span id="part4-correct-count">0</span>/30 câu)
+        </div>
+      </div>
+
+      <div class="quiz-filter-bar">
+        <div class="filter-pills" id="quiz-filter-pills">
+          <button type="button" class="filter-pill active" data-level="all">Tất cả (30 câu)</button>
+          <button type="button" class="filter-pill" data-level="nb">Nhận biết (Câu 1–5)</button>
+          <button type="button" class="filter-pill" data-level="th">Thông hiểu (Câu 6–20)</button>
+          <button type="button" class="filter-pill" data-level="vd">Vận dụng (Câu 21–25)</button>
+          <button type="button" class="filter-pill" data-level="vdc">Vận dụng cao (Câu 26–30)</button>
+        </div>
+        <span style="font-size:12px; color:#64748b; font-weight:600;">Bấm chọn đáp án để xem lời giải ngay</span>
+      </div>
+
+      <div class="quiz-jump-grid" id="quiz-jump-grid"></div>
+
+      <div id="quiz-container" class="quiz-list"></div>
+
+      <div class="summary-banner">
+        <div>
+          <h3 style="font-size:18px; font-weight:800; margin-bottom:4px;">Đã hoàn thành các phần luyện tập?</h3>
+          <p style="font-size:13.5px; color:#bfdbfe;">Xem tổng điểm tích lũy trên thang 100, thống kê theo từng mức độ và nhận huy hiệu đánh giá năng lực.</p>
+        </div>
+        <button type="button" id="open-summary-btn" style="padding:13px 22px; border-radius:14px; background:#fbbf24; color:#0f172a; font-weight:800; font-size:15px; box-shadow:0 4px 12px rgba(251,191,36,0.4);">
+          🏆 Xem Bảng Tổng Kết Điểm
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         MÀN HÌNH 6: BẢNG TỔNG KẾT & VINH DANH
+         ===================================================================== -->
+    <section id="screen-summary" class="screen-section">
+      <div class="summary-card">
+        <div id="summary-badge-icon" style="width:88px; height:88px; margin:0 auto 16px; border-radius:999px; background:#fef3c7; display:flex; align-items:center; justify-content:center; font-size:44px;">
+          🏆
+        </div>
+        <span id="summary-rank-title" style="display:inline-block; padding:5px 14px; border-radius:999px; background:#dbeafe; color:#1e40af; font-weight:800; font-size:12px; text-transform:uppercase; margin-bottom:8px;">
+          CHUYÊN GIA TỨ GIÁC
+        </span>
+        <h2 style="font-size:26px; font-weight:800; color:#0f172a; margin-bottom:4px;">KẾT QUẢ ÔN TẬP CHƯƠNG III</h2>
+        <p style="font-size:13.5px; color:#64748b; margin-bottom:24px;">Gia đình Tứ giác – Toán 8</p>
+
+        <div style="background:#f8fafc; border-radius:20px; padding:22px; border:1px solid #e2e8f0; margin-bottom:22px;">
+          <div style="font-size:42px; font-weight:900; color:#1d4ed8;">
+            <span id="summary-total-score">0</span><span style="font-size:18px; color:#64748b; font-weight:700;">/100 điểm</span>
+          </div>
+          <div style="width:100%; height:12px; background:#e2e8f0; border-radius:999px; overflow:hidden; margin:16px 0;">
+            <div id="summary-progress-bar" style="height:100%; width:0%; background:linear-gradient(90deg, #3b82f6, #10b981); transition:width 0.6s ease;"></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:left; padding-top:12px; border-top:1px solid #e2e8f0; margin-bottom:12px;">
+            <div style="background:#ffffff; padding:12px; border-radius:12px; border:1px solid #e2e8f0;">
+              <span style="font-size:12px; color:#64748b; display:block;">Chặng 3: Tăng tốc (15 thẻ)</span>
+              <strong style="color:#d97706; font-size:15px;"><span id="summary-p3">0</span> / 40 điểm</strong>
+            </div>
+            <div style="background:#ffffff; padding:12px; border-radius:12px; border:1px solid #e2e8f0;">
+              <span style="font-size:12px; color:#64748b; display:block;">Chặng 4: Về đích (30 câu)</span>
+              <strong style="color:#7e22ce; font-size:15px;"><span id="summary-p4">0</span> / 60 điểm</strong>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px; text-align:center;">
+            <div style="background:#ecfdf5; padding:8px; border-radius:10px; border:1px solid #a7f3d0;">
+              <span style="font-size:11px; color:#065f46; font-weight:700; display:block;">Nhận biết</span>
+              <strong style="color:#047857; font-size:14px;"><span id="stat-nb">0</span>/5 câu</strong>
+            </div>
+            <div style="background:#eff6ff; padding:8px; border-radius:10px; border:1px solid #bfdbfe;">
+              <span style="font-size:11px; color:#1e40af; font-weight:700; display:block;">Thông hiểu</span>
+              <strong style="color:#1d4ed8; font-size:14px;"><span id="stat-th">0</span>/15 câu</strong>
+            </div>
+            <div style="background:#fffbeb; padding:8px; border-radius:10px; border:1px solid #fde68a;">
+              <span style="font-size:11px; color:#92400e; font-weight:700; display:block;">Vận dụng</span>
+              <strong style="color:#b45309; font-size:14px;"><span id="stat-vd">0</span>/5 câu</strong>
+            </div>
+            <div style="background:#faf5ff; padding:8px; border-radius:10px; border:1px solid #e9d5ff;">
+              <span style="font-size:11px; color:#6b21a8; font-weight:700; display:block;">Vận dụng cao</span>
+              <strong style="color:#7e22ce; font-size:14px;"><span id="stat-vdc">0</span>/5 câu</strong>
+            </div>
+          </div>
+        </div>
+
+        <div id="summary-advice" style="padding:16px; border-radius:16px; background:#eff6ff; border:1px solid #bfdbfe; color:#1e3a8a; font-size:14px; text-align:left; line-height:1.6; margin-bottom:24px;"></div>
+
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+          <button type="button" id="reset-all-btn" style="padding:12px 20px; border-radius:12px; background:#1e293b; color:#ffffff; font-weight:700; font-size:14px;">
+            ↺ Làm lại toàn bộ bài
+          </button>
+          <button type="button" data-screen="home" style="padding:12px 20px; border-radius:12px; background:#2563eb; color:#ffffff; font-weight:700; font-size:14px;">
+            Về Trang chủ
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL HƯỚNG DẪN SỬ DỤNG -->
+  <div id="guide-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid #f1f5f9; margin-bottom:16px;">
+        <h3 style="font-size:19px; font-weight:800; color:#0f172a;">📖 Hướng dẫn sử dụng thiết bị</h3>
+        <button type="button" id="close-guide-x" style="width:32px; height:32px; border-radius:999px; background:#f1f5f9; font-weight:800; color:#475569;">✕</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:14px; color:#334155;">
+        <div style="padding:14px; border-radius:14px; background:#eff6ff; border:1px solid #dbeafe;">
+          <strong style="color:#1e3a8a; display:block; margin-bottom:4px;">1. Khởi động (Sơ đồ tương tác Gia đình tứ giác)</strong>
+          Bấm vào từng <strong>hình tứ giác</strong> (Tứ giác, Hình thang cân, Hình bình hành...) để xem Định nghĩa, Tính chất và hình vẽ minh họa ký hiệu chuẩn. Bấm vào <strong>nút chìa khóa 🔑</strong> trên các mũi tên để xem Dấu hiệu nhận biết đầy đủ.
+        </div>
+        <div style="padding:14px; border-radius:14px; background:#ecfdf5; border:1px solid #d1fae5;">
+          <strong style="color:#065f46; display:block; margin-bottom:4px;">2. Khám phá (Mô hình động và 20 Thử thách)</strong>
+          Dùng chuột hoặc ngón tay kéo các đỉnh màu xanh <strong>A, B, D</strong> trên màn hình vẽ để thực hiện lần lượt <strong>20 thử thách khám phá</strong> (hoặc bấm nút <em>"🪄 Đưa hình về trạng thái gợi ý"</em> để quan sát trực quan).
+        </div>
+        <div style="padding:14px; border-radius:14px; background:#fffbeb; border:1px solid #fef3c7;">
+          <strong style="color:#78350f; display:block; margin-bottom:4px;">3. Tăng tốc (Phân loại 5 nhóm hình – 40 điểm)</strong>
+          Kéo thả <strong>15 thẻ mệnh đề</strong> ở bên dưới vào đúng 1 trong 5 khung hình phía trên (Hình thang cân, Hình bình hành, Hình chữ nhật, Hình thoi, Hình vuông). Trên điện thoại, em có thể <strong>bấm chọn thẻ</strong> rồi <strong>bấm vào khung hình</strong>.
+        </div>
+        <div style="padding:14px; border-radius:14px; background:#faf5ff; border:1px solid #f3e8ff;">
+          <strong style="color:#581c87; display:block; margin-bottom:4px;">4. Về đích và Bảng tổng kết (30 câu – 60 điểm)</strong>
+          Luyện tập trọn bộ <strong>30 câu hỏi</strong> phân hóa 4 mức độ (Nhận biết, Thông hiểu, Vận dụng, Vận dụng cao) và xem lời giải chi tiết ngay khi chọn đáp án. Cuối cùng bấm <em>"Xem Bảng Tổng Kết Điểm"</em> để nhận đánh giá năng lực trên thang 100 điểm.
+        </div>
+      </div>
+
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+        <button type="button" id="close-guide-btn" style="padding:10px 22px; border-radius:12px; background:#2563eb; color:#ffffff; font-weight:700; font-size:14px;">
+          Đã hiểu, bắt đầu học!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TẠO VÀ CHIA SẺ MÃ QR TRUY CẬP -->
+  <div id="qr-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width:520px; text-align:center;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid #f1f5f9; margin-bottom:16px; text-align:left;">
+        <div>
+          <h3 style="font-size:19px; font-weight:800; color:#0f172a;">📱 Mã QR truy cập cho học sinh</h3>
+          <p style="font-size:12.5px; color:#64748b;">Quét mã bằng camera điện thoại hoặc Zalo để mở bài học</p>
+        </div>
+        <button type="button" id="close-qr-x" style="width:32px; height:32px; border-radius:999px; background:#f1f5f9; font-weight:800; color:#475569;">✕</button>
+      </div>
+
+      <div style="text-align:left; margin-bottom:10px;">
+        <label for="qr-url-input" style="display:block; font-size:12.5px; font-weight:700; color:#334155; margin-bottom:6px;">
+          🔗 Đường dẫn (URL) trang bài học:
+        </label>
+        <div style="display:flex; gap:8px;">
+          <input type="text" id="qr-url-input" placeholder="Dán đường link trang web vào đây..." style="flex:1; padding:10px 12px; border-radius:11px; border:1px solid #cbd5e1; font-size:13.5px; color:#0f172a; background:#f8fafc;">
+          <button type="button" id="refresh-qr-btn" style="padding:10px 14px; border-radius:11px; background:#2563eb; color:#ffffff; font-weight:700; font-size:13px; white-space:nowrap;">
+            Tạo mã QR
+          </button>
+        </div>
+        <p id="qr-local-notice" class="hidden" style="margin-top:8px; padding:10px 12px; border-radius:10px; background:#fffbeb; border:1px solid #fde68a; color:#92400e; font-size:12px; line-height:1.45;">
+          ⚠️ <strong>Lưu ý:</strong> Bạn đang mở file trực tiếp trên máy tính (chưa đưa lên mạng). Hãy tải file lên web rồi dán đường link vào ô trên để tạo mã QR cho học sinh quét.
+        </p>
+      </div>
+
+      <div class="qr-canvas-frame">
+        <canvas id="qr-canvas" width="240" height="240"></canvas>
+      </div>
+
+      <div id="qr-status-msg" style="font-size:12.5px; color:#059669; font-weight:600; min-height:20px; margin-bottom:14px;"></div>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
+        <button type="button" id="download-qr-png-btn" style="padding:11px 18px; border-radius:12px; background:#059669; color:#ffffff; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:6px;">
+          ⬇️ Tải ảnh mã QR (.PNG)
+        </button>
+        <button type="button" id="copy-qr-url-btn" style="padding:11px 18px; border-radius:12px; background:#f1f5f9; border:1px solid #cbd5e1; color:#1e293b; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:6px;">
+          📋 Sao chép đường link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MÃ NGUỒN JAVASCRIPT SẠCH 100% - KHÔNG CHỨA BẤT KỲ KÝ TỰ '<' HAY '>' NÀO TRONG CHUỖI
+       ===================================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let currentScreen = "home";
+
+      // 1. ĐIỀU HƯỚNG MÀN HÌNH
+      function switchTab(tabId) {
+        currentScreen = tabId;
+        document.querySelectorAll(".screen-section").forEach(function (sec) {
+          sec.classList.remove("active");
+        });
+        const target = document.getElementById("screen-" + tabId);
+        if (target) {
+          target.classList.add("active");
+        }
+
+        document.querySelectorAll(".nav-btn").forEach(function (btn) {
+          btn.classList.toggle("active", btn.getAttribute("data-screen") === tabId);
+        });
+
+        if (tabId === "part2") {
+          setTimeout(resizeGeoCanvas, 40);
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      document.body.addEventListener("click", function (e) {
+        const trigger = e.target.closest("[data-screen]");
+        if (trigger) {
+          const dest = trigger.getAttribute("data-screen");
+          if (dest) switchTab(dest);
+        }
+      });
+
+      document.getElementById("brand-home-btn").addEventListener("click", function () {
+        switchTab("home");
+      });
+
+      // 2. MODAL HƯỚNG DẪN
+      const guideModal = document.getElementById("guide-modal");
+      function toggleGuideModal(show) {
+        if (show) guideModal.classList.add("open");
+        else guideModal.classList.remove("open");
+      }
+
+      document.getElementById("open-guide-btn").addEventListener("click", function () { toggleGuideModal(true); });
+      document.getElementById("hero-guide-btn").addEventListener("click", function () { toggleGuideModal(true); });
+      document.getElementById("close-guide-x").addEventListener("click", function () { toggleGuideModal(false); });
+      document.getElementById("close-guide-btn").addEventListener("click", function () { toggleGuideModal(false); });
+      guideModal.addEventListener("click", function (e) {
+        if (e.target === guideModal) toggleGuideModal(false);
+      });
+
+      // 3. THUẬT TOÁN VẼ MÃ QR CHUẨN ISO/IEC 18004 CHẠY 100% OFFLINE
+      const OfflineQR = (function () {
+        const EXP_TABLE = new Array(256);
+        const LOG_TABLE = new Array(256);
+        for (let i = 0; i < 8; i++) EXP_TABLE[i] = 1 << i;
+        for (let i = 8; i < 256; i++) {
+          EXP_TABLE[i] = EXP_TABLE[i - 4] ^ EXP_TABLE[i - 5] ^ EXP_TABLE[i - 6] ^ EXP_TABLE[i - 8];
+        }
+        for (let i = 0; i < 255; i++) LOG_TABLE[EXP_TABLE[i]] = i;
+
+        function glog(n) { return LOG_TABLE[n]; }
+        function gexp(n) {
+          while (n < 0) n += 255;
+          while (n >= 256) n -= 255;
+          return EXP_TABLE[n];
+        }
+
+        function Poly(num, shift) {
+          let offset = 0;
+          while (offset < num.length && num[offset] === 0) offset++;
+          this.num = new Array(num.length - offset + shift);
+          for (let i = 0; i < num.length - offset; i++) this.num[i] = num[i + offset];
+          for (let i = num.length - offset; i < this.num.length; i++) this.num[i] = 0;
+        }
+        Poly.prototype.get = function (index) { return this.num[index]; };
+        Poly.prototype.getLength = function () { return this.num.length; };
+        Poly.prototype.multiply = function (e) {
+          const num = new Array(this.getLength() + e.getLength() - 1).fill(0);
+          for (let i = 0; i < this.getLength(); i++) {
+            for (let j = 0; j < e.getLength(); j++) {
+              num[i + j] ^= gexp(glog(this.get(i)) + glog(e.get(j)));
+            }
+          }
+          return new Poly(num, 0);
+        };
+        Poly.prototype.mod = function (e) {
+          if (this.getLength() - e.getLength() < 0) return this;
+          const ratio = glog(this.get(0)) - glog(e.get(0));
+          const num = this.num.slice();
+          for (let i = 0; i < e.getLength(); i++) {
+            num[i] ^= gexp(glog(e.get(i)) + ratio);
+          }
+          return new Poly(num, 0).mod(e);
+        };
+
+        function getErrorCorrectPolynomial(ecLength) {
+          let a = new Poly([1], 0);
+          for (let i = 0; i < ecLength; i++) {
+            a = a.multiply(new Poly([1, gexp(i)], 0));
+          }
+          return a;
+        }
+
+        const RS_BLOCK_TABLE_L = [
+          [1, 26, 19],
+          [1, 44, 34],
+          [1, 70, 55],
+          [1, 100, 80],
+          [1, 134, 108],
+          [2, 86, 68],
+          [2, 98, 78],
+          [2, 121, 97],
+          [2, 146, 116],
+          [2, 86, 68, 2, 87, 69]
+        ];
+
+        function getRSBlocks(typeNumber) {
+          const rsBlock = RS_BLOCK_TABLE_L[typeNumber - 1];
+          const list = [];
+          for (let i = 0; i < rsBlock.length / 3; i++) {
+            const count = rsBlock[i * 3 + 0];
+            const totalCount = rsBlock[i * 3 + 1];
+            const dataCount = rsBlock[i * 3 + 2];
+            for (let j = 0; j < count; j++) {
+              list.push({ totalCount: totalCount, dataCount: dataCount });
+            }
+          }
+          return list;
+        }
+
+        function BitBuffer() {
+          this.buffer = [];
+          this.length = 0;
+        }
+        BitBuffer.prototype.put = function (num, length) {
+          for (let i = 0; i < length; i++) {
+            this.putBit(((num >>> (length - i - 1)) & 1) === 1);
+          }
+        };
+        BitBuffer.prototype.putBit = function (bit) {
+          const bufIndex = Math.floor(this.length / 8);
+          if (this.buffer.length <= bufIndex) this.buffer.push(0);
+          if (bit) this.buffer[bufIndex] |= (0x80 >>> (this.length % 8));
+          this.length++;
+        };
+
+        function encodeUTF8(str) {
+          const bytes = [];
+          for (let i = 0; i < str.length; i++) {
+            const code = str.charCodeAt(i);
+            if (code < 0x80) bytes.push(code);
+            else if (code < 0x800) {
+              bytes.push(0xc0 | (code >> 6), 0x80 | (code & 0x3f));
+            } else {
+              bytes.push(0xe0 | (code >> 12), 0x80 | ((code >> 6) & 0x3f), 0x80 | (code & 0x3f));
+            }
+          }
+          return bytes;
+        }
+
+        const ALIGNMENT_PATTERN = [
+          [], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34],
+          [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50]
+        ];
+
+        function getBCHDigit(data) {
+          let digit = 0;
+          while (data !== 0) {
+            digit++;
+            data >>>= 1;
+          }
+          return digit;
+        }
+
+        function getBCHTypeInfo(data) {
+          let d = data << 10;
+          while (getBCHDigit(d) - getBCHDigit(0x537) >= 0) {
+            d ^= (0x537 << (getBCHDigit(d) - getBCHDigit(0x537)));
+          }
+          return ((data << 10) | d) ^ 0x5412;
+        }
+
+        function getBCHTypeNumber(data) {
+          let d = data << 12;
+          while (getBCHDigit(d) - getBCHDigit(0x1f25) >= 0) {
+            d ^= (0x1f25 << (getBCHDigit(d) - getBCHDigit(0x1f25)));
+          }
+          return (data << 12) | d;
+        }
+
+        function createQRMatrix(text) {
+          const dataBytes = encodeUTF8(text);
+          let typeNumber = 1;
+          for (let v = 1; v <= 10; v++) {
+            const blocks = getRSBlocks(v);
+            let cap = 0;
+            for (let b = 0; b < blocks.length; b++) cap += blocks[b].dataCount;
+            const headerBytes = v < 10 ? 2 : 3;
+            if (dataBytes.length + headerBytes <= cap) {
+              typeNumber = v;
+              break;
+            }
+            if (v === 10) typeNumber = 10;
+          }
+
+          const rsBlocks = getRSBlocks(typeNumber);
+          const buffer = new BitBuffer();
+          buffer.put(4, 4);
+          buffer.put(dataBytes.length, typeNumber < 10 ? 8 : 16);
+          for (let i = 0; i < dataBytes.length; i++) buffer.put(dataBytes[i], 8);
+
+          let totalDataCount = 0;
+          for (let i = 0; i < rsBlocks.length; i++) totalDataCount += rsBlocks[i].dataCount;
+
+          if (buffer.length + 4 <= totalDataCount * 8) buffer.put(0, 4);
+          while (buffer.length % 8 !== 0) buffer.putBit(false);
+          while (true) {
+            if (buffer.length >= totalDataCount * 8) break;
+            buffer.put(0xec, 8);
+            if (buffer.length >= totalDataCount * 8) break;
+            buffer.put(0x11, 8);
+          }
+
+          let offset = 0;
+          let maxDcCount = 0;
+          let maxEcCount = 0;
+          const dcdata = new Array(rsBlocks.length);
+          const ecdata = new Array(rsBlocks.length);
+
+          for (let r = 0; r < rsBlocks.length; r++) {
+            const dcCount = rsBlocks[r].dataCount;
+            const ecCount = rsBlocks[r].totalCount - dcCount;
+            maxDcCount = Math.max(maxDcCount, dcCount);
+            maxEcCount = Math.max(maxEcCount, ecCount);
+            dcdata[r] = new Array(dcCount);
+            for (let i = 0; i < dcCount; i++) dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+            offset += dcCount;
+
+            const rsPoly = getErrorCorrectPolynomial(ecCount);
+            const rawPoly = new Poly(dcdata[r], rsPoly.getLength() - 1);
+            const modPoly = rawPoly.mod(rsPoly);
+            ecdata[r] = new Array(rsPoly.getLength() - 1);
+            for (let i = 0; i < ecdata[r].length; i++) {
+              const modIndex = i + modPoly.getLength() - ecdata[r].length;
+              ecdata[r][i] = modIndex >= 0 ? modPoly.get(modIndex) : 0;
+            }
+          }
+
+          const finalData = [];
+          for (let i = 0; i < maxDcCount; i++) {
+            for (let r = 0; r < rsBlocks.length; r++) {
+              if (i < dcdata[r].length) finalData.push(dcdata[r][i]);
+            }
+          }
+          for (let i = 0; i < maxEcCount; i++) {
+            for (let r = 0; r < rsBlocks.length; r++) {
+              if (i < ecdata[r].length) finalData.push(ecdata[r][i]);
+            }
+          }
+
+          const moduleCount = typeNumber * 4 + 17;
+          const modules = Array.from({ length: moduleCount }, function () {
+            return new Array(moduleCount).fill(null);
+          });
+
+          function setupPositionProbePattern(row, col) {
+            for (let r = -1; r <= 7; r++) {
+              if (row + r <= -1 || moduleCount <= row + r) continue;
+              for (let c = -1; c <= 7; c++) {
+                if (col + c <= -1 || moduleCount <= col + c) continue;
+                if ((0 <= r && r <= 6 && (c === 0 || c === 6)) ||
+                    (0 <= c && c <= 6 && (r === 0 || r === 6)) ||
+                    (2 <= r && r <= 4 && 2 <= c && c <= 4)) {
+                  modules[row + r][col + c] = true;
+                } else {
+                  modules[row + r][col + c] = false;
+                }
+              }
+            }
+          }
+
+          setupPositionProbePattern(0, 0);
+          setupPositionProbePattern(moduleCount - 7, 0);
+          setupPositionProbePattern(0, moduleCount - 7);
+
+          const pos = ALIGNMENT_PATTERN[typeNumber - 1];
+          for (let i = 0; i < pos.length; i++) {
+            for (let j = 0; j < pos.length; j++) {
+              const row = pos[i];
+              const col = pos[j];
+              if (modules[row][col] !== null) continue;
+              for (let r = -2; r <= 2; r++) {
+                for (let c = -2; c <= 2; c++) {
+                  modules[row + r][col + c] = (r === -2 || r === 2 || c === -2 || c === 2 || (r === 0 && c === 0));
+                }
+              }
+            }
+          }
+
+          for (let i = 8; i < moduleCount - 8; i++) {
+            if (modules[i][6] === null) modules[i][6] = (i % 2 === 0);
+            if (modules[6][i] === null) modules[6][i] = (i % 2 === 0);
+          }
+
+          const maskPattern = 0;
+          const typeInfoBits = getBCHTypeInfo((1 << 3) | maskPattern);
+          for (let i = 0; i < 15; i++) {
+            const mod = ((typeInfoBits >> i) & 1) === 1;
+            if (i < 6) modules[i][8] = mod;
+            else if (i < 8) modules[i + 1][8] = mod;
+            else modules[moduleCount - 15 + i][8] = mod;
+
+            if (i < 8) modules[8][moduleCount - i - 1] = mod;
+            else if (i < 9) modules[8][15 - i] = mod;
+            else modules[8][15 - i - 1] = mod;
+          }
+          modules[moduleCount - 8][8] = true;
+
+          if (typeNumber >= 7) {
+            const typeNumBits = getBCHTypeNumber(typeNumber);
+            for (let i = 0; i < 18; i++) {
+              const mod = ((typeNumBits >> i) & 1) === 1;
+              modules[Math.floor(i / 3)][i % 3 + moduleCount - 8 - 3] = mod;
+              modules[i % 3 + moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+            }
+          }
+
+          let inc = -1;
+          let row = moduleCount - 1;
+          let bitIndex = 7;
+          let byteIndex = 0;
+
+          for (let col = moduleCount - 1; col > 0; col -= 2) {
+            if (col === 6) col--;
+            while (true) {
+              for (let c = 0; c < 2; c++) {
+                if (modules[row][col - c] === null) {
+                  let dark = false;
+                  if (byteIndex < finalData.length) {
+                    dark = (((finalData[byteIndex] >>> bitIndex) & 1) === 1);
+                  }
+                  if ((row + col - c) % 2 === 0) dark = !dark;
+                  modules[row][col - c] = dark;
+                  bitIndex--;
+                  if (bitIndex === -1) {
+                    byteIndex++;
+                    bitIndex = 7;
+                  }
+                }
+              }
+              row += inc;
+              if (row < 0 || moduleCount <= row) {
+                row -= inc;
+                inc = -inc;
+                break;
+              }
+            }
+          }
+          return modules;
+        }
+
+        function renderToCanvas(canvasEl, text) {
+          const modules = createQRMatrix(text);
+          const count = modules.length;
+          const size = 240;
+          const quietZone = 2;
+          const cellSize = size / (count + quietZone * 2);
+          const c = canvasEl.getContext("2d");
+
+          c.fillStyle = "#ffffff";
+          c.fillRect(0, 0, size, size);
+          c.fillStyle = "#0f172a";
+
+          for (let r = 0; r < count; r++) {
+            for (let col = 0; col < count; col++) {
+              if (modules[r][col]) {
+                const x = Math.round((col + quietZone) * cellSize);
+                const y = Math.round((r + quietZone) * cellSize);
+                const w = Math.ceil(cellSize);
+                const h = Math.ceil(cellSize);
+                c.fillRect(x, y, w, h);
+              }
+            }
+          }
+        }
+
+        return { renderToCanvas: renderToCanvas };
+      })();
+
+      const qrModal = document.getElementById("qr-modal");
+      const qrUrlInput = document.getElementById("qr-url-input");
+      const qrCanvas = document.getElementById("qr-canvas");
+      const qrLocalNotice = document.getElementById("qr-local-notice");
+      const qrStatusMsg = document.getElementById("qr-status-msg");
+
+      function generateQRFromInput() {
+        let val = qrUrlInput.value.trim();
+        if (!val) {
+          val = "https://giadinhtugiac-toan8.tiiny.site";
+          qrUrlInput.value = val;
+        }
+        try {
+          OfflineQR.renderToCanvas(qrCanvas, val);
+          qrStatusMsg.style.color = "#059669";
+          qrStatusMsg.textContent = "✓ Mã QR đã sẵn sàng cho đường dẫn trên!";
+        } catch (err) {
+          qrStatusMsg.style.color = "#e11d48";
+          qrStatusMsg.textContent = "⚠️ Đường dẫn quá dài, vui lòng rút gọn link trước khi tạo QR.";
+        }
+      }
+
+      function openQRModal() {
+        const currentHref = window.location.href;
+        const isPublicWeb = /^https?:\/\//i.test(currentHref) &&
+          !currentHref.includes("localhost") &&
+          !currentHref.includes("127.0.0.1") &&
+          !currentHref.includes("usercontent.goog");
+
+        if (isPublicWeb) {
+          qrUrlInput.value = currentHref;
+          qrLocalNotice.classList.add("hidden");
+        } else {
+          if (!qrUrlInput.value) {
+            qrUrlInput.value = "https://giadinhtugiac-toan8.tiiny.site";
+          }
+          qrLocalNotice.classList.remove("hidden");
+        }
+        generateQRFromInput();
+        qrModal.classList.add("open");
+      }
+
+      function closeQRModal() {
+        qrModal.classList.remove("open");
+      }
+
+      document.getElementById("open-qr-btn").addEventListener("click", openQRModal);
+      document.getElementById("hero-qr-btn").addEventListener("click", openQRModal);
+      document.getElementById("close-qr-x").addEventListener("click", closeQRModal);
+      qrModal.addEventListener("click", function (e) {
+        if (e.target === qrModal) closeQRModal();
+      });
+
+      document.getElementById("refresh-qr-btn").addEventListener("click", generateQRFromInput);
+      qrUrlInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") generateQRFromInput();
+      });
+
+      document.getElementById("download-qr-png-btn").addEventListener("click", function () {
+        try {
+          const exportCanvas = document.createElement("canvas");
+          exportCanvas.width = 340;
+          exportCanvas.height = 390;
+          const ectx = exportCanvas.getContext("2d");
+
+          ectx.fillStyle = "#ffffff";
+          ectx.fillRect(0, 0, 340, 390);
+
+          ectx.strokeStyle = "#2563eb";
+          ectx.lineWidth = 4;
+          ectx.strokeRect(8, 8, 324, 374);
+
+          ectx.fillStyle = "#1e3a8a";
+          ectx.font = "bold 17px sans-serif";
+          ectx.textAlign = "center";
+          ectx.fillText("GIA ĐÌNH TỨ GIÁC - TOÁN 8", 170, 40);
+
+          ectx.drawImage(qrCanvas, 50, 62, 240, 240);
+
+          ectx.fillStyle = "#334155";
+          ectx.font = "600 13px sans-serif";
+          ectx.fillText("Quét mã QR để vào bài ôn tập", 170, 336);
+
+          ectx.fillStyle = "#64748b";
+          ectx.font = "11px sans-serif";
+          const shortLink = qrUrlInput.value.trim().slice(0, 42);
+          ectx.fillText(shortLink, 170, 360);
+
+          const dataUrl = exportCanvas.toDataURL("image/png");
+          const a = document.createElement("a");
+          a.href = dataUrl;
+          a.download = "Ma_QR_Gia_dinh_Tu_giac_Toan_8.png";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        } catch (err) {
+          console.error(err);
+        }
+      });
+
+      document.getElementById("copy-qr-url-btn").addEventListener("click", function () {
+        qrUrlInput.select();
+        qrUrlInput.setSelectionRange(0, 99999);
+        try {
+          document.execCommand("copy");
+          qrStatusMsg.style.color = "#2563eb";
+          qrStatusMsg.textContent = "📋 Đã sao chép đường link vào bộ nhớ tạm!";
+        } catch (e) {}
+      });
+
+      // 4. NÚT TẢI FILE HTML ĐỘC LẬP VỀ MÁY
+      document.getElementById("download-html-btn").addEventListener("click", function () {
+        try {
+          const cloneDoc = document.documentElement.cloneNode(true);
+
+          cloneDoc.querySelectorAll(".screen-section").forEach(function (sec) {
+            sec.classList.remove("active");
+          });
+          const homeSec = cloneDoc.getElementById("screen-home");
+          if (homeSec) homeSec.classList.add("active");
+
+          cloneDoc.querySelectorAll(".nav-btn").forEach(function (btn) {
+            btn.classList.toggle("active", btn.getAttribute("data-screen") === "home");
+          });
+
+          cloneDoc.querySelectorAll(".modal-overlay").forEach(function (m) {
+            m.classList.remove("open");
+          });
+
+          const scoreEl = cloneDoc.getElementById("header-score");
+          if (scoreEl) scoreEl.textContent = "0";
+
+          const dynamicIds = [
+            "part1-detail-panel",
+            "lab-nav-grid",
+            "lab-challenge-card",
+            "cards-pool",
+            "quiz-jump-grid",
+            "quiz-container",
+            "zone-items-hinhthangcan",
+            "zone-items-hinhbinhhanh",
+            "zone-items-hinhchunhat",
+            "zone-items-hinhthoi",
+            "zone-items-hinhvuong"
+          ];
+          dynamicIds.forEach(function (id) {
+            const el = cloneDoc.getElementById(id);
+            if (el) el.innerHTML = "";
+          });
+
+          const fullHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
+          const blob = new Blob([fullHtml], { type: "text/html;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "Gia_dinh_Tu_giac_Toan_8.html";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+        } catch (err) {
+          console.error(err);
+        }
+      });
+
+      // 5. ÂM THANH PHẢN HỒI
+      function playSound(type) {
+        try {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          const ctx = new AudioCtx();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          if (type === "success") {
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+            osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.12, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.35);
+          } else {
+            osc.type = "triangle";
+            osc.frequency.setValueAtTime(220, ctx.currentTime);
+            osc.frequency.setValueAtTime(175, ctx.currentTime + 0.12);
+            gain.gain.setValueAtTime(0.12, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.3);
+          }
+        } catch (e) {}
+      }
+
+      // =====================================================================
+      // 6. DỮ LIỆU CHẶNG 1: KHỞI ĐỘNG (VĂN BẢN ĐẦY ĐỦ, KHÔNG VIẾT TẮT, KHÔNG DẤU '<' '>')
+      // =====================================================================
+      const shapesData = {
+        tugiac: {
+          title: "TỨ GIÁC",
+          badge: "Khái niệm cơ sở",
+          def: "Tứ giác ABCD là hình gồm bốn đoạn thẳng AB, BC, CD, DA, trong đó không có hai đoạn thẳng nào cùng nằm trên một đường thẳng.",
+          props: [
+            "Định lí tổng các góc: Tổng bốn góc của một tứ giác bằng 360° (∠A + ∠B + ∠C + ∠D = 360°).",
+            "Tứ giác lồi luôn nằm về một phía của đường thẳng chứa bất kì cạnh nào của nó."
+          ],
+          signs: []
+        },
+        hinhthangcan: {
+          title: "HÌNH THANG CÂN",
+          badge: "Hình thang đặc biệt",
+          def: "Hình thang cân là hình thang có hai góc kề một đáy bằng nhau.",
+          props: [
+            "Trong hình thang cân, hai cạnh bên bằng nhau (cạnh AD bằng cạnh BC).",
+            "Trong hình thang cân, hai góc kề một đáy bằng nhau (∠D = ∠C và ∠A = ∠B).",
+            "Trong hình thang cân, hai đường chéo bằng nhau (đường chéo AC bằng đường chéo BD)."
+          ],
+          signs: [
+            "Hình thang có hai góc kề một đáy bằng nhau là hình thang cân.",
+            "Hình thang có hai đường chéo bằng nhau là hình thang cân."
+          ]
+        },
+        hinhbinhhanh: {
+          title: "HÌNH BÌNH HÀNH",
+          badge: "Tứ giác trung tâm",
+          def: "Hình bình hành là tứ giác có các cạnh đối song song.",
+          props: [
+            "Trong hình bình hành, các cạnh đối bằng nhau (cạnh AB bằng cạnh CD và cạnh AD bằng cạnh BC).",
+            "Trong hình bình hành, các góc đối bằng nhau (∠A = ∠C và ∠B = ∠D).",
+            "Trong hình bình hành, hai đường chéo cắt nhau tại trung điểm của mỗi đường (đoạn OA bằng đoạn OC và đoạn OB bằng đoạn OD)."
+          ],
+          signs: [
+            "Tứ giác có các cạnh đối song song là hình bình hành.",
+            "Tứ giác có các cạnh đối bằng nhau là hình bình hành.",
+            "Tứ giác có hai cạnh đối song song và bằng nhau là hình bình hành.",
+            "Tứ giác có các góc đối bằng nhau là hình bình hành.",
+            "Tứ giác có hai đường chéo cắt nhau tại trung điểm của mỗi đường là hình bình hành."
+          ]
+        },
+        hinhchunhat: {
+          title: "HÌNH CHỮ NHẬT",
+          badge: "Hình bình hành đặc biệt",
+          def: "Hình chữ nhật là tứ giác có bốn góc vuông.",
+          props: [
+            "Hình chữ nhật có tất cả các tính chất của hình bình hành và hình thang cân.",
+            "Trong hình chữ nhật, hai đường chéo bằng nhau và cắt nhau tại trung điểm của mỗi đường (AC = BD; OA = OB = OC = OD).",
+            "Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền."
+          ],
+          signs: [
+            "Tứ giác có ba góc vuông là hình chữ nhật.",
+            "Hình thang cân có một góc vuông là hình chữ nhật.",
+            "Hình bình hành có một góc vuông là hình chữ nhật.",
+            "Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật."
+          ]
+        },
+        hinhthoi: {
+          title: "HÌNH THOI",
+          badge: "Hình bình hành đặc biệt",
+          def: "Hình thoi là tứ giác có bốn cạnh bằng nhau.",
+          props: [
+            "Hình thoi có tất cả các tính chất của hình bình hành.",
+            "Trong hình thoi, hai đường chéo vuông góc với nhau.",
+            "Trong hình thoi, hai đường chéo là các đường phân giác của các góc của hình thoi."
+          ],
+          signs: [
+            "Tứ giác có bốn cạnh bằng nhau là hình thoi.",
+            "Hình bình hành có hai cạnh kề bằng nhau là hình thoi.",
+            "Hình bình hành có hai đường chéo vuông góc với nhau là hình thoi.",
+            "Hình bình hành có một đường chéo là đường phân giác của một góc là hình thoi."
+          ]
+        },
+        hinhvuong: {
+          title: "HÌNH VUÔNG",
+          badge: "Tứ giác đặc biệt nhất",
+          def: "Hình vuông là tứ giác có bốn góc vuông và có bốn cạnh bằng nhau.",
+          props: [
+            "Hình vuông có tất cả các tính chất của hình chữ nhật và hình thoi.",
+            "Trong hình vuông, hai đường chéo bằng nhau, vuông góc với nhau, cắt nhau tại trung điểm của mỗi đường và là các đường phân giác của các góc."
+          ],
+          signs: [
+            "Hình chữ nhật có hai cạnh kề bằng nhau là hình vuông.",
+            "Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông.",
+            "Hình chữ nhật có một đường chéo là đường phân giác của một góc là hình vuông.",
+            "Hình thoi có một góc vuông là hình vuông.",
+            "Hình thoi có hai đường chéo bằng nhau là hình vuông."
+          ]
+        }
+      };
+
+      const arrowsData = {
+        tugiac_htc: {
+          from: "Tứ giác / Hình thang",
+          to: "Hình thang cân",
+          title: "Dấu hiệu nhận biết Hình thang cân",
+          signs: [
+            "1. Tứ giác có hai cạnh đối song song là hình thang.",
+            "2. Hình thang có hai góc kề một đáy bằng nhau là hình thang cân.",
+            "3. Hình thang có hai đường chéo bằng nhau là hình thang cân.",
+            "Lưu ý: Hình thang có hai cạnh bên bằng nhau chưa chắc là hình thang cân (có thể là hình bình hành)."
+          ]
+        },
+        tugiac_hbh: {
+          from: "Tứ giác",
+          to: "Hình bình hành",
+          title: "Năm dấu hiệu nhận biết Hình bình hành",
+          signs: [
+            "1. Tứ giác có các cạnh đối song song là hình bình hành.",
+            "2. Tứ giác có các cạnh đối bằng nhau là hình bình hành.",
+            "3. Tứ giác có hai cạnh đối song song và bằng nhau là hình bình hành.",
+            "4. Tứ giác có các góc đối bằng nhau là hình bình hành.",
+            "5. Tứ giác có hai đường chéo cắt nhau tại trung điểm của mỗi đường là hình bình hành."
+          ]
+        },
+        hbh_hcn: {
+          from: "Hình bình hành",
+          to: "Hình chữ nhật",
+          title: "Dấu hiệu từ Hình bình hành thành Hình chữ nhật",
+          signs: [
+            "1. Hình bình hành có một góc vuông là hình chữ nhật.",
+            "2. Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật.",
+            "Ngoài ra: Tứ giác có ba góc vuông là hình chữ nhật; Hình thang cân có một góc vuông là hình chữ nhật."
+          ]
+        },
+        hbh_hthoi: {
+          from: "Hình bình hành",
+          to: "Hình thoi",
+          title: "Dấu hiệu từ Hình bình hành thành Hình thoi",
+          signs: [
+            "1. Hình bình hành có hai cạnh kề bằng nhau là hình thoi.",
+            "2. Hình bình hành có hai đường chéo vuông góc với nhau là hình thoi.",
+            "3. Hình bình hành có một đường chéo là đường phân giác của một góc là hình thoi.",
+            "Ngoài ra: Tứ giác có bốn cạnh bằng nhau là hình thoi."
+          ]
+        },
+        hcn_hv: {
+          from: "Hình chữ nhật",
+          to: "Hình vuông",
+          title: "Dấu hiệu từ Hình chữ nhật thành Hình vuông",
+          signs: [
+            "1. Hình chữ nhật có hai cạnh kề bằng nhau là hình vuông.",
+            "2. Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông.",
+            "3. Hình chữ nhật có một đường chéo là đường phân giác của một góc là hình vuông."
+          ]
+        },
+        hthoi_hv: {
+          from: "Hình thoi",
+          to: "Hình vuông",
+          title: "Dấu hiệu từ Hình thoi thành Hình vuông",
+          signs: [
+            "1. Hình thoi có một góc vuông là hình vuông.",
+            "2. Hình thoi có hai đường chéo bằng nhau là hình vuông."
+          ]
+        }
+      };
+
+      let isInitialShapeLoad = true;
+      function showShapeInfo(key) {
+        const data = shapesData[key];
+        if (!data) return;
+
+        document.querySelectorAll(".tree-shape-btn").forEach(function (n) {
+          n.classList.remove("active-shape");
+        });
+        const activeNode = document.getElementById("node-" + key);
+        if (activeNode) activeNode.classList.add("active-shape");
+
+        const panel = document.getElementById("part1-detail-panel");
+        panel.innerHTML = "";
+
+        const badge = document.createElement("span");
+        badge.style.cssText = "display:inline-block; padding:4px 12px; border-radius:999px; background:#dbeafe; color:#1e40af; font-size:12px; font-weight:700; margin-bottom:8px;";
+        badge.textContent = data.badge;
+        panel.appendChild(badge);
+
+        const title = document.createElement("h3");
+        title.style.cssText = "font-size:22px; font-weight:800; color:#0f172a; margin-bottom:14px;";
+        title.textContent = data.title;
+        panel.appendChild(title);
+
+        const defLabel = document.createElement("h4");
+        defLabel.style.cssText = "font-size:12px; font-weight:800; text-transform:uppercase; color:#64748b; margin-bottom:6px;";
+        defLabel.textContent = "📌 Định nghĩa";
+        panel.appendChild(defLabel);
+
+        const defBox = document.createElement("p");
+        defBox.style.cssText = "font-size:14px; color:#0f172a; font-weight:600; background:#eff6ff; padding:12px; border-radius:12px; border:1px solid #dbeafe; margin-bottom:16px;";
+        defBox.textContent = data.def;
+        panel.appendChild(defBox);
+
+        const propLabel = document.createElement("h4");
+        propLabel.style.cssText = "font-size:12px; font-weight:800; text-transform:uppercase; color:#64748b; margin-bottom:8px;";
+        propLabel.textContent = "✨ Tính chất";
+        panel.appendChild(propLabel);
+
+        const ulProps = document.createElement("ul");
+        ulProps.style.cssText = "list-style:none; display:flex; flex-direction:column; gap:8px;";
+        data.props.forEach(function (p) {
+          const li = document.createElement("li");
+          li.style.cssText = "font-size:14px; color:#334155; display:flex; gap:8px;";
+          li.textContent = "• " + p;
+          ulProps.appendChild(li);
+        });
+        panel.appendChild(ulProps);
+
+        if (data.signs && data.signs.length > 0) {
+          const signLabel = document.createElement("h4");
+          signLabel.style.cssText = "font-size:12px; font-weight:800; text-transform:uppercase; color:#64748b; margin:16px 0 8px;";
+          signLabel.textContent = "🔑 Dấu hiệu nhận biết";
+          panel.appendChild(signLabel);
+
+          const ulSigns = document.createElement("ul");
+          ulSigns.style.cssText = "list-style:none; display:flex; flex-direction:column; gap:6px;";
+          data.signs.forEach(function (s) {
+            const li = document.createElement("li");
+            li.style.cssText = "font-size:13.5px; color:#334155; background:#fffbeb; padding:10px 12px; border-radius:12px; border:1px solid #fde68a;";
+            li.textContent = "✓ " + s;
+            ulSigns.appendChild(li);
+          });
+          panel.appendChild(ulSigns);
+        }
+        if (!isInitialShapeLoad && window.innerWidth <= 768) {
+          panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+        isInitialShapeLoad = false;
+      }
+
+      function showArrowInfo(key) {
+        const data = arrowsData[key];
+        if (!data) return;
+        const panel = document.getElementById("part1-detail-panel");
+        panel.innerHTML = "";
+
+        const badge = document.createElement("span");
+        badge.style.cssText = "display:inline-block; padding:4px 12px; border-radius:999px; background:#fef3c7; color:#78350f; font-size:12px; font-weight:700; margin-bottom:10px;";
+        badge.textContent = "🔑 Dấu hiệu biến đổi";
+        panel.appendChild(badge);
+
+        const pathRow = document.createElement("div");
+        pathRow.style.cssText = "display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#475569; margin-bottom:10px; flex-wrap:wrap;";
+        pathRow.textContent = data.from + "  ➔  " + data.to;
+        panel.appendChild(pathRow);
+
+        const title = document.createElement("h3");
+        title.style.cssText = "font-size:20px; font-weight:800; color:#0f172a; margin-bottom:14px;";
+        title.textContent = data.title;
+        panel.appendChild(title);
+
+        const listDiv = document.createElement("div");
+        listDiv.style.cssText = "display:flex; flex-direction:column; gap:10px;";
+        data.signs.forEach(function (s) {
+          const item = document.createElement("div");
+          item.style.cssText = "padding:12px 14px; border-radius:12px; background:#fffbeb; border:1px solid #fde68a; font-size:14px; color:#1e293b; font-weight:600;";
+          item.textContent = s;
+          listDiv.appendChild(item);
+        });
+        panel.appendChild(listDiv);
+        if (window.innerWidth <= 768) {
+          panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
+
+      document.querySelectorAll("[data-shape]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          showShapeInfo(el.getAttribute("data-shape"));
+        });
+      });
+
+      document.querySelectorAll("[data-arrow]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          showArrowInfo(el.getAttribute("data-arrow"));
+        });
+      });
+
+      showShapeInfo("hinhbinhhanh");
+
+      // =====================================================================
+      // 7. CHẶNG 2: MÔ HÌNH HÌNH HỌC ĐỘNG & 20 THỬ THÁCH
+      // =====================================================================
+      const canvas = document.getElementById("geoCanvas");
+      const ctx = canvas.getContext("2d");
+
+      let pts = {
+        A: { x: 80, y: 220 },
+        B: { x: 230, y: 220 },
+        D: { x: 130, y: 110 }
+      };
+      let draggingPoint = null;
+
+      function resizeGeoCanvas() {
+        const container = document.getElementById("canvas-container");
+        if (!container || container.clientWidth === 0) return;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = container.clientWidth * dpr;
+        canvas.height = container.clientHeight * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        drawGeoCanvas();
+      }
+
+      window.addEventListener("resize", function () {
+        if (currentScreen === "part2") resizeGeoCanvas();
+      });
+
+      function setGeoPreset(type) {
+        const container = document.getElementById("canvas-container");
+        const w = container.clientWidth || 600;
+        const h = container.clientHeight || 400;
+        const cx = w / 2;
+        const cy = h / 2;
+
+        const isMob = w < 520;
+        const scale = isMob ? 0.58 : 1.0;
+        const yOff = isMob ? cy + 28 : cy;
+
+        if (type === "parallelogram") {
+          pts.A = { x: cx - 140 * scale, y: yOff + 85 * scale };
+          pts.B = { x: cx + 80 * scale, y: yOff + 85 * scale };
+          pts.D = { x: cx - 70 * scale, y: yOff - 85 * scale };
+        } else if (type === "rectangle") {
+          pts.A = { x: cx - 120 * scale, y: yOff + 80 * scale };
+          pts.B = { x: cx + 120 * scale, y: yOff + 80 * scale };
+          pts.D = { x: cx - 120 * scale, y: yOff - 80 * scale };
+        } else if (type === "rhombus") {
+          const side = 180 * scale;
+          const rad = Math.PI / 3;
+          pts.A = { x: cx - 120 * scale, y: yOff + 75 * scale };
+          pts.B = { x: pts.A.x + side, y: pts.A.y };
+          pts.D = { x: pts.A.x + side * Math.cos(rad), y: pts.A.y - side * Math.sin(rad) };
+        } else if (type === "square") {
+          const side = 170 * scale;
+          pts.A = { x: cx - side / 2, y: yOff + side / 2 };
+          pts.B = { x: cx + side / 2, y: yOff + side / 2 };
+          pts.D = { x: cx - side / 2, y: yOff - side / 2 };
+        }
+        drawGeoCanvas();
+      }
+
+      document.querySelectorAll("[data-preset]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setGeoPreset(btn.getAttribute("data-preset"));
+        });
+      });
+
+      document.getElementById("chk-diagonals").addEventListener("change", drawGeoCanvas);
+      document.getElementById("chk-measures").addEventListener("change", drawGeoCanvas);
+
+      function dist(p1, p2) {
+        return Math.hypot(p2.x - p1.x, p2.y - p1.y);
+      }
+
+      function drawGeoCanvas() {
+        const container = document.getElementById("canvas-container");
+        const w = container.clientWidth || 600;
+        const h = container.clientHeight || 400;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < w; x += 25) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+        for (let y = 0; y < h; y += 25) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        }
+
+        const A = pts.A;
+        const B = pts.B;
+        const D = pts.D;
+        const C = { x: B.x + D.x - A.x, y: B.y + D.y - A.y };
+        const O = { x: (A.x + C.x) / 2, y: (A.y + C.y) / 2 };
+
+        const lenAB = dist(A, B);
+        const lenAD = dist(A, D);
+        const lenAC = dist(A, C);
+        const lenBD = dist(B, D);
+
+        const vAB = { x: B.x - A.x, y: B.y - A.y };
+        const vAD = { x: D.x - A.x, y: D.y - A.y };
+        const dotA = vAB.x * vAD.x + vAB.y * vAD.y;
+        const cosA = Math.max(-1, Math.min(1, dotA / (lenAB * lenAD || 1)));
+        const angleADeg = Math.round(Math.acos(cosA) * 180 / Math.PI);
+        const angleBDeg = 180 - angleADeg;
+
+        const vAC = { x: C.x - A.x, y: C.y - A.y };
+        const vBD = { x: D.x - B.x, y: D.y - B.y };
+        const dotO = Math.abs(vAC.x * vBD.x + vAC.y * vBD.y);
+        const cosO = Math.max(-1, Math.min(1, dotO / (lenAC * lenBD || 1)));
+        const angleODeg = Math.round(Math.acos(cosO) * 180 / Math.PI);
+
+        const isRightAngle = Math.abs(angleADeg - 90) <= 1;
+        const isEqualSides = Math.abs(lenAB - lenAD) <= 4;
+
+        const badge = document.getElementById("shape-status-badge");
+        let fillColor = "rgba(59, 130, 246, 0.14)";
+        let strokeColor = "#2563eb";
+
+        if (isRightAngle && isEqualSides) {
+          badge.textContent = "👑 HÌNH VUÔNG ABCD (∠A = 90° và AB = AD)";
+          badge.style.background = "#f3e8ff";
+          badge.style.color = "#6b21a8";
+          badge.style.borderColor = "#d8b4fe";
+          fillColor = "rgba(147, 51, 234, 0.16)";
+          strokeColor = "#7e22ce";
+        } else if (isRightAngle) {
+          badge.textContent = "📐 HÌNH CHỮ NHẬT ABCD (∠A = 90°, AC = BD)";
+          badge.style.background = "#e0e7ff";
+          badge.style.color = "#3730a3";
+          badge.style.borderColor = "#a5b4fc";
+          fillColor = "rgba(79, 70, 229, 0.15)";
+          strokeColor = "#4338ca";
+        } else if (isEqualSides) {
+          badge.textContent = "💎 HÌNH THOI ABCD (AB = AD, AC ⊥ BD)";
+          badge.style.background = "#d1fae5";
+          badge.style.color = "#065f46";
+          badge.style.borderColor = "#6ee7b7";
+          fillColor = "rgba(16, 185, 129, 0.16)";
+          strokeColor = "#047857";
+        } else {
+          badge.textContent = "Hình bình hành ABCD";
+          badge.style.background = "#dbeafe";
+          badge.style.color = "#1e40af";
+          badge.style.borderColor = "#93c5fd";
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(A.x, A.y);
+        ctx.lineTo(B.x, B.y);
+        ctx.lineTo(C.x, C.y);
+        ctx.lineTo(D.x, D.y);
+        ctx.closePath();
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = strokeColor;
+        ctx.stroke();
+
+        const showDiagonals = document.getElementById("chk-diagonals").checked;
+        const showAngleO = document.getElementById("chk-measures").checked;
+
+        if (showDiagonals) {
+          ctx.save();
+          ctx.setLineDash([6, 5]);
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = "#f59e0b";
+          ctx.beginPath();
+          ctx.moveTo(A.x, A.y); ctx.lineTo(C.x, C.y);
+          ctx.moveTo(B.x, B.y); ctx.lineTo(D.x, D.y);
+          ctx.stroke();
+          ctx.restore();
+
+          ctx.beginPath();
+          ctx.arc(O.x, O.y, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#d97706";
+          ctx.fill();
+          ctx.font = "bold 13px sans-serif";
+          ctx.fillStyle = "#b45309";
+          ctx.fillText("O", O.x + 8, O.y - 6);
+        }
+
+        // Bảng thông số trực tiếp trên Canvas (tự thu gọn trên màn hình nhỏ)
+        const isSmall = w < 520;
+        const boxX = isSmall ? 8 : 12;
+        const boxY = isSmall ? 8 : 12;
+        const boxW = isSmall ? Math.min(w - 16, 235) : 250;
+        const boxH = isSmall ? 76 : 102;
+        const stepY = isSmall ? 16 : 21;
+        const startY = isSmall ? 24 : 33;
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.94)";
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(boxX, boxY, boxW, boxH, 10);
+        } else {
+          ctx.rect(boxX, boxY, boxW, boxH);
+        }
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = isSmall ? "bold 10.5px sans-serif" : "bold 12px sans-serif";
+        ctx.fillStyle = "#0f172a";
+        ctx.fillText("• AB = " + (lenAB / 35).toFixed(1) + " cm | AD = " + (lenAD / 35).toFixed(1) + " cm", boxX + 8, startY);
+        ctx.fillText("• ∠A = " + angleADeg + "° | ∠B = " + angleBDeg + "°", boxX + 8, startY + stepY);
+        if (showDiagonals) {
+          ctx.fillStyle = "#b45309";
+          ctx.fillText("• AC = " + (lenAC / 35).toFixed(1) + " | BD = " + (lenBD / 35).toFixed(1), boxX + 8, startY + stepY * 2);
+          if (showAngleO) {
+            ctx.fillText("• Góc tại O = " + angleODeg + "°", boxX + 8, startY + stepY * 3);
+          }
+        } else if (showAngleO) {
+          ctx.fillStyle = "#b45309";
+          ctx.fillText("• Góc tại O = " + angleODeg + "°", boxX + 8, startY + stepY * 2);
+        }
+
+        function drawVertex(p, label, draggable) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, draggable ? 8 : 5.5, 0, Math.PI * 2);
+          ctx.fillStyle = draggable ? "#0284c7" : "#64748b";
+          ctx.fill();
+          ctx.lineWidth = 2.5;
+          ctx.strokeStyle = "#ffffff";
+          ctx.stroke();
+
+          ctx.font = "bold 15px sans-serif";
+          ctx.fillStyle = "#0f172a";
+          ctx.fillText(label, p.x + 11, p.y - 10);
+        }
+
+        drawVertex(A, "A", true);
+        drawVertex(B, "B", true);
+        drawVertex(D, "D", true);
+        drawVertex(C, "C", false);
+      }
+
+      function getPointerPos(evt) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+        const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      }
+
+      function onPointerDown(evt) {
+        const pos = getPointerPos(evt);
+        const keys = ["A", "B", "D"];
+        for (let i = 0; i < keys.length; i++) {
+          if (dist(pos, pts[keys[i]]) < 24) {
+            draggingPoint = keys[i];
+            break;
+          }
+        }
+      }
+
+      function onPointerMove(evt) {
+        if (!draggingPoint) return;
+        evt.preventDefault();
+        const pos = getPointerPos(evt);
+        const container = document.getElementById("canvas-container");
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+
+        let nx = Math.max(30, Math.min(w - 40, pos.x));
+        let ny = Math.max(30, Math.min(h - 30, pos.y));
+
+        if (draggingPoint === "B") {
+          if (Math.abs(ny - pts.A.y) < 10) ny = pts.A.y;
+        }
+        if (draggingPoint === "D") {
+          if (Math.abs(pts.B.y - pts.A.y) < 2 && Math.abs(nx - pts.A.x) < 12) {
+            nx = pts.A.x;
+          }
+          const lenAB = dist(pts.A, pts.B);
+          const curLenAD = dist(pts.A, { x: nx, y: ny });
+          if (Math.abs(curLenAD - lenAB) < 8 && curLenAD > 0) {
+            const ratio = lenAB / curLenAD;
+            nx = pts.A.x + (nx - pts.A.x) * ratio;
+            ny = pts.A.y + (ny - pts.A.y) * ratio;
+          }
+        }
+
+        pts[draggingPoint] = { x: nx, y: ny };
+        drawGeoCanvas();
+      }
+
+      function onPointerUp() {
+        draggingPoint = null;
+      }
+
+      canvas.addEventListener("mousedown", onPointerDown);
+      window.addEventListener("mousemove", onPointerMove);
+      window.addEventListener("mouseup", onPointerUp);
+
+      canvas.addEventListener("touchstart", onPointerDown, { passive: false });
+      window.addEventListener("touchmove", onPointerMove, { passive: false });
+      window.addEventListener("touchend", onPointerUp);
+
+      // 20 Thử thách khám phá (4 lựa chọn A, B, C, D mỗi câu)
+      const labChallenges = [
+        {
+          id: 1,
+          preset: "rectangle",
+          q: "Kéo đỉnh B của hình bình hành ABCD sao cho ∠A = 90°. Khi đó độ dài hai đường chéo AC và BD như thế nào với nhau?",
+          options: [
+            "A. Hai đường chéo bằng nhau (AC = BD)",
+            "B. Đường chéo AC luôn dài hơn đường chéo BD",
+            "C. Đường chéo BD luôn dài hơn đường chéo AC",
+            "D. Hai đường chéo vuông góc với nhau"
+          ],
+          ans: 0,
+          explain: "Khi hình bình hành ABCD có ∠A = 90° thì nó trở thành Hình chữ nhật, nên hai đường chéo bằng nhau (AC = BD)."
+        },
+        {
+          id: 2,
+          preset: "rhombus",
+          q: "Kéo các đỉnh của hình bình hành ABCD sao cho hai cạnh kề bằng nhau (AB = AD). Hãy quan sát góc tại giao điểm O của hai đường chéo AC và BD:",
+          options: [
+            "A. Góc tại O bằng 45°",
+            "B. Góc tại O bằng 60°",
+            "C. Hai đường chéo vuông góc với nhau (Góc tại O = 90°)",
+            "D. Góc tại O bằng 120°"
+          ],
+          ans: 2,
+          explain: "Khi hình bình hành có hai cạnh kề AB bằng AD thì nó trở thành Hình thoi, nên hai đường chéo AC và BD vuông góc với nhau (góc tại O bằng 90°)."
+        },
+        {
+          id: 3,
+          preset: "square",
+          q: "Kéo các đỉnh của hình bình hành ABCD để đồng thời có ∠A = 90° và AB = AD. Lúc này hình bình hành biến thành hình gì?",
+          options: [
+            "A. Hình thang cân",
+            "B. Hình thoi",
+            "C. Hình chữ nhật",
+            "D. Hình vuông"
+          ],
+          ans: 3,
+          explain: "Hình bình hành vừa có một góc vuông (∠A = 90°) vừa có hai cạnh kề bằng nhau (AB = AD) chính là Hình vuông."
+        },
+        {
+          id: 4,
+          preset: "parallelogram",
+          q: "Khi kéo đỉnh A, B hoặc D của hình bình hành ABCD bất kì, hãy quan sát độ dài hai cạnh đối AB và CD:",
+          options: [
+            "A. Hai cạnh đối luôn bằng nhau (AB = CD)",
+            "B. Cạnh AB luôn gấp đôi cạnh CD",
+            "C. Cạnh AB luôn bằng nửa cạnh CD",
+            "D. Hai cạnh đối không bằng nhau"
+          ],
+          ans: 0,
+          explain: "Trong mọi hình bình hành, các cạnh đối luôn song song và bằng nhau (cạnh AB bằng cạnh CD và cạnh AD bằng cạnh BC)."
+        },
+        {
+          id: 5,
+          preset: "parallelogram",
+          q: "Kéo đỉnh B để thay đổi độ nghiêng của hình bình hành ABCD. Vị trí giao điểm O của hai đường chéo AC và BD có đặc điểm gì?",
+          options: [
+            "A. O luôn nằm sát đỉnh A",
+            "B. O luôn là trung điểm của mỗi đường chéo (OA = OC và OB = OD)",
+            "C. O luôn nằm ngoài hình bình hành",
+            "D. O chia đường chéo theo tỉ lệ 1 phần 3"
+          ],
+          ans: 1,
+          explain: "Tính chất cơ bản của hình bình hành: Hai đường chéo cắt nhau tại trung điểm của mỗi đường."
+        },
+        {
+          id: 6,
+          preset: "rectangle",
+          q: "Kéo đỉnh B sao cho hai đường chéo AC và BD có độ dài bằng nhau (AC = BD). Khi đó số đo góc ∠A của hình bình hành bằng bao nhiêu độ?",
+          options: [
+            "A. ∠A = 45°",
+            "B. ∠A = 60°",
+            "C. ∠A = 90° (hình bình hành trở thành Hình chữ nhật)",
+            "D. ∠A = 120°"
+          ],
+          ans: 2,
+          explain: "Dấu hiệu nhận biết Hình chữ nhật: Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật (các góc đều bằng 90°)."
+        },
+        {
+          id: 7,
+          preset: "rhombus",
+          q: "Kéo đỉnh D sao cho góc tạo bởi hai đường chéo tại O bằng 90° (AC vuông góc BD). Hãy so sánh độ dài hai cạnh kề AB và AD lúc này:",
+          options: [
+            "A. AB = AD (hình bình hành trở thành Hình thoi)",
+            "B. AB gấp đôi AD",
+            "C. AB bằng nửa AD",
+            "D. AB và AD không liên quan đến nhau"
+          ],
+          ans: 0,
+          explain: "Dấu hiệu nhận biết Hình thoi: Hình bình hành có hai đường chéo vuông góc với nhau là hình thoi (bốn cạnh bằng nhau)."
+        },
+        {
+          id: 8,
+          preset: "square",
+          q: "Khi hình bình hành ABCD biến thành Hình vuông, hai đường chéo AC và BD có những tính chất nào sau đây?",
+          options: [
+            "A. Chỉ bằng nhau nhưng không vuông góc",
+            "B. Chỉ vuông góc nhưng không bằng nhau",
+            "C. Không bằng nhau và không vuông góc",
+            "D. Vừa bằng nhau (AC = BD), vừa vuông góc với nhau (góc tại O = 90°)"
+          ],
+          ans: 3,
+          explain: "Hình vuông mang đầy đủ tính chất của Hình chữ nhật và Hình thoi nên hai đường chéo vừa bằng nhau vừa vuông góc với nhau."
+        },
+        {
+          id: 9,
+          preset: "rectangle",
+          q: "Trong Hình chữ nhật ABCD, giao điểm O cách đều bốn đỉnh A, B, C, D. Vậy độ dài đoạn thẳng OA bằng bao nhiêu phần độ dài đường chéo BD?",
+          options: [
+            "A. OA bằng một phần tư BD",
+            "B. OA bằng một nửa BD",
+            "C. OA bằng BD",
+            "D. OA bằng hai lần BD"
+          ],
+          ans: 1,
+          explain: "Vì đường chéo AC bằng đường chéo BD và O là trung điểm mỗi đường nên đoạn OA bằng một nửa đường chéo BD."
+        },
+        {
+          id: 10,
+          preset: "rhombus",
+          q: "Kéo đỉnh B và D để tạo thành Hình thoi ABCD. Đường chéo AC có vai trò gì đối với góc ∠BAD?",
+          options: [
+            "A. AC vuông góc với cạnh AB",
+            "B. AC song song với cạnh CD",
+            "C. AC là đường phân giác của góc ∠BAD",
+            "D. AC bằng cạnh AB"
+          ],
+          ans: 2,
+          explain: "Trong hình thoi, hai đường chéo là các đường phân giác của các góc của hình thoi."
+        },
+        {
+          id: 11,
+          preset: "parallelogram",
+          q: "Kéo đỉnh B để góc ∠A = 60° trên hình bình hành ABCD. Khi đó góc kề với nó là góc ∠B sẽ có số đo bằng bao nhiêu độ?",
+          options: [
+            "A. ∠B = 60°",
+            "B. ∠B = 90°",
+            "C. ∠B = 120° (vì hai góc kề một cạnh bù nhau)",
+            "D. ∠B = 150°"
+          ],
+          ans: 2,
+          explain: "Trong hình bình hành, hai cạnh đối AD và BC song song nên hai góc trong cùng phía ∠A + ∠B = 180°. Khi ∠A = 60° thì ∠B = 180° − 60° = 120°."
+        },
+        {
+          id: 12,
+          preset: "parallelogram",
+          q: "Khi hình bình hành ABCD có ∠A = 75°, số đo góc đối diện ∠C bằng bao nhiêu độ?",
+          options: [
+            "A. ∠C = 75°",
+            "B. ∠C = 90°",
+            "C. ∠C = 105°",
+            "D. ∠C = 150°"
+          ],
+          ans: 0,
+          explain: "Trong hình bình hành, các góc đối bằng nhau nên ∠C = ∠A = 75°."
+        },
+        {
+          id: 13,
+          preset: "square",
+          q: "Trên mô hình Hình vuông ABCD, đường chéo AC chia góc vuông ∠BAD thành hai góc bằng nhau. Mỗi góc đó bằng bao nhiêu độ?",
+          options: [
+            "A. 30°",
+            "B. 45°",
+            "C. 60°",
+            "D. 90°"
+          ],
+          ans: 1,
+          explain: "Vì hình vuông cũng là hình thoi nên đường chéo AC là đường phân giác của góc vuông 90°, tạo thành hai góc 90° chia 2 bằng 45°."
+        },
+        {
+          id: 14,
+          preset: "rectangle",
+          q: "Để biến một Hình chữ nhật ABCD (đang có ∠A = 90°) thành Hình vuông, em cần kéo các đỉnh sao cho thỏa mãn thêm điều kiện nào?",
+          options: [
+            "A. Kéo sao cho hai cạnh kề bằng nhau (AB = AD)",
+            "B. Kéo sao cho ∠A = 120°",
+            "C. Kéo sao cho ∠B = 60°",
+            "D. Không cần kéo thêm điều kiện nào"
+          ],
+          ans: 0,
+          explain: "Dấu hiệu nhận biết: Hình chữ nhật có hai cạnh kề bằng nhau là hình vuông."
+        },
+        {
+          id: 15,
+          preset: "rhombus",
+          q: "Để biến một Hình thoi ABCD (đang có AB = AD) thành Hình vuông, em cần kéo các đỉnh sao cho thỏa mãn thêm điều kiện nào?",
+          options: [
+            "A. Kéo sao cho AB dài gấp đôi AD",
+            "B. Kéo sao cho ∠A = 90° (hoặc hai đường chéo AC = BD)",
+            "C. Kéo sao cho hai đường chéo vuông góc",
+            "D. Kéo sao cho ∠A = 60°"
+          ],
+          ans: 1,
+          explain: "Dấu hiệu nhận biết: Hình thoi có một góc vuông (hoặc có hai đường chéo bằng nhau) là hình vuông."
+        },
+        {
+          id: 16,
+          preset: "rectangle",
+          q: "Trong Hình chữ nhật ABCD, xét tam giác vuông ABC với đường trung tuyến BO ứng với cạnh huyền AC. Độ dài BO bằng bao nhiêu?",
+          options: [
+            "A. BO bằng một phần ba AC",
+            "B. BO bằng một nửa AC",
+            "C. BO bằng AC",
+            "D. BO bằng hai lần AC"
+          ],
+          ans: 1,
+          explain: "Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền: đoạn BO bằng một nửa đoạn AC."
+        },
+        {
+          id: 17,
+          preset: "rhombus",
+          q: "Nếu kéo các đỉnh để Hình thoi ABCD có cạnh AB = 5 cm, thì chu vi của hình thoi đó bằng bao nhiêu cm?",
+          options: [
+            "A. 10 cm",
+            "B. 15 cm",
+            "C. 20 cm",
+            "D. 25 cm"
+          ],
+          ans: 2,
+          explain: "Hình thoi có bốn cạnh bằng nhau nên chu vi bằng 4 × 5 = 20 cm."
+        },
+        {
+          id: 18,
+          preset: "parallelogram",
+          q: "Nếu kéo đỉnh B và D để Hình bình hành ABCD có cạnh AB = 6 cm và cạnh AD = 4 cm, thì chu vi của hình bình hành bằng bao nhiêu cm?",
+          options: [
+            "A. 10 cm",
+            "B. 16 cm",
+            "C. 20 cm",
+            "D. 24 cm"
+          ],
+          ans: 2,
+          explain: "Chu vi hình bình hành bằng 2 × (AB + AD) = 2 × (6 + 4) = 20 cm."
+        },
+        {
+          id: 19,
+          preset: "rhombus",
+          q: "Quan sát Hình thoi ABCD có hai đường chéo AC và BD cắt nhau tại O. Bốn tam giác OAB, OBC, OCD, ODA là các tam giác gì?",
+          options: [
+            "A. Bốn tam giác đều",
+            "B. Bốn tam giác vuông bằng nhau",
+            "C. Bốn tam giác tù",
+            "D. Bốn tam giác nhọn"
+          ],
+          ans: 1,
+          explain: "Vì hai đường chéo hình thoi vuông góc với nhau tại trung điểm O của mỗi đường nên chia hình thoi thành 4 tam giác vuông bằng nhau."
+        },
+        {
+          id: 20,
+          preset: "square",
+          q: "Tổng kết hành trình khám phá: Hình tứ giác nào sau đây hội tụ đầy đủ tất cả tính chất của Hình thang cân, Hình bình hành, Hình chữ nhật và Hình thoi?",
+          options: [
+            "A. Hình thang",
+            "B. Hình bình hành",
+            "C. Hình chữ nhật",
+            "D. Hình vuông"
+          ],
+          ans: 3,
+          explain: "Hình vuông là tứ giác đặc biệt nhất, mang trọn vẹn mọi tính chất của Hình thang cân, Hình bình hành, Hình chữ nhật và Hình thoi."
+        }
+      ];
+
+      let currentLabIdx = 0;
+      let labAnswers = {};
+
+      function renderLabChallenge() {
+        const navGrid = document.getElementById("lab-nav-grid");
+        navGrid.innerHTML = "";
+        let correctTotal = 0;
+
+        labChallenges.forEach(function (item, idx) {
+          const userAns = labAnswers[item.id];
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "lab-num-btn";
+          if (idx === currentLabIdx) btn.classList.add("active");
+          else if (userAns !== undefined) {
+            btn.classList.add(userAns === item.ans ? "done-ok" : "done-err");
+          }
+          if (userAns === item.ans) correctTotal++;
+          btn.textContent = String(item.id);
+          btn.addEventListener("click", function () {
+            currentLabIdx = idx;
+            renderLabChallenge();
+          });
+          navGrid.appendChild(btn);
+        });
+
+        document.getElementById("lab-correct-count").textContent = String(correctTotal);
+
+        const cur = labChallenges[currentLabIdx];
+        const card = document.getElementById("lab-challenge-card");
+        card.innerHTML = "";
+        const userAns = labAnswers[cur.id];
+
+        const topRow = document.createElement("div");
+        topRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px; flex-wrap:wrap;";
+
+        const badgeSpan = document.createElement("span");
+        badgeSpan.style.cssText = "font-size:12px; font-weight:800; color:#047857; text-transform:uppercase;";
+        badgeSpan.textContent = "Thử thách " + cur.id + " / 20";
+        topRow.appendChild(badgeSpan);
+
+        const autoPoseBtn = document.createElement("button");
+        autoPoseBtn.type = "button";
+        autoPoseBtn.style.cssText = "padding:4px 9px; border-radius:8px; background:#d1fae5; border:1px solid #6ee7b7; color:#065f46; font-size:11.5px; font-weight:700;";
+        autoPoseBtn.textContent = "🪄 Đưa hình về trạng thái gợi ý";
+        autoPoseBtn.addEventListener("click", function () {
+          setGeoPreset(cur.preset);
+        });
+        topRow.appendChild(autoPoseBtn);
+        card.appendChild(topRow);
+
+        const qPara = document.createElement("p");
+        qPara.style.cssText = "font-size:13.5px; font-weight:700; color:#0f172a; line-height:1.5;";
+        qPara.textContent = cur.q;
+        card.appendChild(qPara);
+
+        const optsWrap = document.createElement("div");
+        optsWrap.style.cssText = "display:flex; flex-direction:column; gap:7px; margin-top:10px;";
+        cur.options.forEach(function (optText, oIdx) {
+          const optBtn = document.createElement("button");
+          optBtn.type = "button";
+          optBtn.className = "lab-opt-btn";
+          if (userAns !== undefined) {
+            if (oIdx === cur.ans) optBtn.classList.add("opt-correct");
+            else if (oIdx === userAns) optBtn.classList.add("opt-wrong");
+          }
+          optBtn.textContent = optText;
+          optBtn.addEventListener("click", function () {
+            labAnswers[cur.id] = oIdx;
+            if (oIdx === cur.ans) playSound("success");
+            else playSound("error");
+            renderLabChallenge();
+          });
+          optsWrap.appendChild(optBtn);
+        });
+        card.appendChild(optsWrap);
+
+        if (userAns !== undefined) {
+          const isOk = (userAns === cur.ans);
+          const expBox = document.createElement("div");
+          expBox.style.cssText = "margin-top:10px; padding:10px 12px; border-radius:10px; font-size:12.5px; line-height:1.5; background:" +
+            (isOk ? "#ecfdf5; border:1px solid #6ee7b7; color:#064e3b;" : "#fff1f2; border:1px solid #fda4af; color:#881337;");
+          const boldPrefix = document.createElement("strong");
+          boldPrefix.textContent = isOk ? "🎉 Chính xác! " : "💡 Chưa đúng rồi! ";
+          expBox.appendChild(boldPrefix);
+          expBox.appendChild(document.createTextNode(cur.explain));
+          card.appendChild(expBox);
+        }
+
+        const prevBtn = document.getElementById("lab-prev-btn");
+        const nextBtn = document.getElementById("lab-next-btn");
+        prevBtn.disabled = (currentLabIdx === 0);
+        prevBtn.style.opacity = (currentLabIdx === 0) ? "0.5" : "1";
+        nextBtn.disabled = (currentLabIdx === labChallenges.length - 1);
+        nextBtn.style.opacity = (currentLabIdx === labChallenges.length - 1) ? "0.5" : "1";
+      }
+
+      document.getElementById("lab-prev-btn").addEventListener("click", function () {
+        if (currentLabIdx > 0) {
+          currentLabIdx--;
+          renderLabChallenge();
+        }
+      });
+
+      document.getElementById("lab-next-btn").addEventListener("click", function () {
+        if (currentLabIdx < labChallenges.length - 1) {
+          currentLabIdx++;
+          renderLabChallenge();
+        }
+      });
+
+      // =====================================================================
+      // 8. CHẶNG 3: TĂNG TỐC – PHÂN LOẠI 5 NHÓM HÌNH & 15 THẺ (40 ĐIỂM)
+      // =====================================================================
+      const dragCardsBase = [
+        { id: "c1", text: "Hình thang có hai góc kề một đáy bằng nhau.", target: "hinhthangcan", hint: "Đây là định nghĩa và dấu hiệu nhận biết cơ bản của Hình thang cân." },
+        { id: "c2", text: "Hình thang có hai đường chéo bằng nhau.", target: "hinhthangcan", hint: "Hình thang có hai đường chéo bằng nhau là Hình thang cân (chưa đủ điều kiện là hình chữ nhật)." },
+        { id: "c3", text: "Có hai cạnh bên bằng nhau và hai góc kề một đáy bằng nhau.", target: "hinhthangcan", hint: "Tính chất đặc trưng về cạnh bên và góc kề đáy của Hình thang cân." },
+
+        { id: "c4", text: "Tứ giác có các cạnh đối song song.", target: "hinhbinhhanh", hint: "Đây là định nghĩa chuẩn của Hình bình hành." },
+        { id: "c5", text: "Tứ giác có hai đường chéo cắt nhau tại trung điểm của mỗi đường.", target: "hinhbinhhanh", hint: "Đây là dấu hiệu nhận biết số 5 của Hình bình hành." },
+        { id: "c6", text: "Tứ giác có hai cạnh đối song song và bằng nhau.", target: "hinhbinhhanh", hint: "Đây là dấu hiệu nhận biết số 3 của Hình bình hành." },
+
+        { id: "c7", text: "Tứ giác có ba góc vuông.", target: "hinhchunhat", hint: "Tổng bốn góc tứ giác bằng 360°, có ba góc vuông thì góc còn lại cũng vuông nên là Hình chữ nhật." },
+        { id: "c8", text: "Hình bình hành có hai đường chéo bằng nhau.", target: "hinhchunhat", hint: "Hình bình hành có hai đường chéo bằng nhau là Hình chữ nhật." },
+        { id: "c9", text: "Hình thang cân có một góc vuông.", target: "hinhchunhat", hint: "Hình thang cân có một góc vuông thì cả bốn góc đều vuông nên là Hình chữ nhật." },
+
+        { id: "c10", text: "Tứ giác có bốn cạnh bằng nhau.", target: "hinhthoi", hint: "Đây là định nghĩa chuẩn của Hình thoi." },
+        { id: "c11", text: "Hình bình hành có hai đường chéo vuông góc với nhau.", target: "hinhthoi", hint: "Hình bình hành có hai đường chéo vuông góc với nhau là Hình thoi." },
+        { id: "c12", text: "Hình bình hành có một đường chéo là đường phân giác của một góc.", target: "hinhthoi", hint: "Đây là dấu hiệu nhận biết đặc trưng của Hình thoi." },
+
+        { id: "c13", text: "Tứ giác có bốn góc vuông và có bốn cạnh bằng nhau.", target: "hinhvuong", hint: "Đây là định nghĩa chuẩn của Hình vuông." },
+        { id: "c14", text: "Hình chữ nhật có hai cạnh kề bằng nhau.", target: "hinhvuong", hint: "Hình chữ nhật có hai cạnh kề bằng nhau là Hình vuông." },
+        { id: "c15", text: "Hình thoi có một góc vuông (hoặc hai đường chéo bằng nhau).", target: "hinhvuong", hint: "Đây là dấu hiệu nhận biết từ Hình thoi trở thành Hình vuông." }
+      ];
+
+      let dragCardsDeck = [];
+      let placedCards = {};
+      let selectedCardId = null;
+      let part3Score = 0;
+
+      function shuffleCardsDeck() {
+        dragCardsDeck = dragCardsBase.slice();
+        for (let i = dragCardsDeck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const tmp = dragCardsDeck[i];
+          dragCardsDeck[i] = dragCardsDeck[j];
+          dragCardsDeck[j] = tmp;
+        }
+      }
+
+      function renderDragGame() {
+        const pool = document.getElementById("cards-pool");
+        pool.innerHTML = "";
+
+        const zoneKeys = ["hinhthangcan", "hinhbinhhanh", "hinhchunhat", "hinhthoi", "hinhvuong"];
+        zoneKeys.forEach(function (z) {
+          document.getElementById("zone-items-" + z).innerHTML = "";
+          document.getElementById("count-" + z).textContent = "0/3";
+        });
+
+        const counts = { hinhthangcan: 0, hinhbinhhanh: 0, hinhchunhat: 0, hinhthoi: 0, hinhvuong: 0 };
+        let remaining = 0;
+
+        dragCardsDeck.forEach(function (card) {
+          if (placedCards[card.id]) {
+            counts[card.target]++;
+            const placedEl = document.createElement("div");
+            placedEl.style.cssText = "padding:9px 11px; border-radius:11px; background:#059669; color:#ffffff; font-size:12px; font-weight:600; display:flex; gap:6px; line-height:1.4;";
+            placedEl.textContent = "✓ " + card.text;
+            document.getElementById("zone-items-" + card.target).appendChild(placedEl);
+          } else {
+            remaining++;
+            const cardEl = document.createElement("div");
+            cardEl.id = "drag-" + card.id;
+            cardEl.draggable = true;
+            cardEl.className = "drag-card" + (selectedCardId === card.id ? " selected" : "");
+            cardEl.textContent = card.text;
+
+            cardEl.addEventListener("dragstart", function (e) {
+              e.dataTransfer.setData("text/plain", card.id);
+            });
+            cardEl.addEventListener("click", function () {
+              selectedCardId = (selectedCardId === card.id) ? null : card.id;
+              renderDragGame();
+            });
+
+            pool.appendChild(cardEl);
+          }
+        });
+
+        Object.keys(counts).forEach(function (k) {
+          document.getElementById("count-" + k).textContent = counts[k] + "/3";
+        });
+
+        document.getElementById("remaining-cards-count").textContent = String(remaining);
+        const placedCount = Object.keys(placedCards).length;
+        part3Score = Math.round((placedCount * 40) / 15);
+        document.getElementById("part3-score").textContent = String(part3Score);
+        updateGlobalScore();
+      }
+
+      document.querySelectorAll(".drop-zone").forEach(function (zoneEl) {
+        const targetZone = zoneEl.getAttribute("data-zone");
+        zoneEl.addEventListener("dragover", function (e) {
+          e.preventDefault();
+        });
+        zoneEl.addEventListener("drop", function (e) {
+          e.preventDefault();
+          const cardId = e.dataTransfer.getData("text/plain");
+          evaluateCardPlacement(cardId, targetZone);
+        });
+        zoneEl.addEventListener("click", function () {
+          if (selectedCardId) {
+            evaluateCardPlacement(selectedCardId, targetZone);
+          }
+        });
+      });
+
+      function evaluateCardPlacement(cardId, targetZone) {
+        const card = dragCardsDeck.find(function (c) { return c.id === cardId; });
+        if (!card || placedCards[cardId]) return;
+
+        const toast = document.getElementById("drag-toast");
+        const toastText = document.getElementById("drag-toast-text");
+        toast.classList.remove("hidden");
+
+        if (card.target === targetZone) {
+          playSound("success");
+          placedCards[cardId] = true;
+          selectedCardId = null;
+          toast.style.background = "#ecfdf5";
+          toast.style.borderColor = "#6ee7b7";
+          toast.style.color = "#064e3b";
+          toastText.textContent = "🎉 Chính xác! \"" + card.text + "\"";
+          renderDragGame();
+        } else {
+          playSound("error");
+          const el = document.getElementById("drag-" + cardId);
+          if (el) {
+            el.classList.remove("animate-shake");
+            void el.offsetWidth;
+            el.classList.add("animate-shake");
+          }
+          toast.style.background = "#fff1f2";
+          toast.style.borderColor = "#fda4af";
+          toast.style.color = "#881337";
+          toastText.textContent = "❌ Chưa đúng rồi! Gợi ý: " + card.hint;
+        }
+      }
+
+      document.getElementById("close-toast-btn").addEventListener("click", function () {
+        document.getElementById("drag-toast").classList.add("hidden");
+      });
+
+      function resetDragGame() {
+        placedCards = {};
+        selectedCardId = null;
+        shuffleCardsDeck();
+        document.getElementById("drag-toast").classList.add("hidden");
+        renderDragGame();
+      }
+
+      document.getElementById("reset-drag-btn").addEventListener("click", resetDragGame);
+
+      // =====================================================================
+      // 9. CHẶNG 4: 30 CÂU HỎI PHÂN HÓA 4 MỨC ĐỘ (60 ĐIỂM)
+      //    5 Nhận biết (1-5) | 15 Thông hiểu (6-20) | 5 Vận dụng (21-25) | 5 Vận dụng cao (26-30)
+      // =====================================================================
+      const quizQuestions = [
+        {
+          id: 1, level: "nb", levelLabel: "Nhận biết",
+          question: "Câu 1: Tổng số đo bốn góc của một tứ giác bằng bao nhiêu độ?",
+          options: ["A. 180°", "B. 270°", "C. 360°", "D. 540°"],
+          ans: 2,
+          explanation: "Theo định lí tổng các góc của một tứ giác: Tổng bốn góc của một tứ giác bằng 360°."
+        },
+        {
+          id: 2, level: "nb", levelLabel: "Nhận biết",
+          question: "Câu 2: Hình thang cân là hình thang có đặc điểm nào sau đây?",
+          options: [
+            "A. Hai cạnh bên song song",
+            "B. Hai góc kề một đáy bằng nhau",
+            "C. Hai cạnh đáy bằng nhau",
+            "D. Hai đường chéo vuông góc với nhau"
+          ],
+          ans: 1,
+          explanation: "Định nghĩa chuẩn: Hình thang cân là hình thang có hai góc kề một đáy bằng nhau."
+        },
+        {
+          id: 3, level: "nb", levelLabel: "Nhận biết",
+          question: "Câu 3: Trong các khẳng định sau, khẳng định nào đúng với định nghĩa Hình bình hành?",
+          options: [
+            "A. Tứ giác có hai cạnh đối song song",
+            "B. Tứ giác có các cạnh đối song song",
+            "C. Tứ giác có bốn cạnh bằng nhau",
+            "D. Tứ giác có bốn góc vuông"
+          ],
+          ans: 1,
+          explanation: "Hình bình hành là tứ giác có các cạnh đối song song (cả hai cặp cạnh đối đều song song)."
+        },
+        {
+          id: 4, level: "nb", levelLabel: "Nhận biết",
+          question: "Câu 4: Tứ giác có bốn cạnh bằng nhau là hình gì?",
+          options: ["A. Hình chữ nhật", "B. Hình thang cân", "C. Hình thoi", "D. Hình bình hành"],
+          ans: 2,
+          explanation: "Định nghĩa chuẩn: Hình thoi là tứ giác có bốn cạnh bằng nhau."
+        },
+        {
+          id: 5, level: "nb", levelLabel: "Nhận biết",
+          question: "Câu 5: Hình vuông là tứ giác có đặc điểm nào sau đây?",
+          options: [
+            "A. Có bốn góc vuông và có bốn cạnh bằng nhau",
+            "B. Chỉ có bốn góc vuông",
+            "C. Chỉ có bốn cạnh bằng nhau",
+            "D. Chỉ có hai đường chéo bằng nhau"
+          ],
+          ans: 0,
+          explanation: "Định nghĩa chuẩn: Hình vuông là tứ giác có bốn góc vuông và có bốn cạnh bằng nhau."
+        },
+
+        {
+          id: 6, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 6: Cho tứ giác ABCD có ∠A = 110°, ∠B = 80°, ∠C = 75°. Số đo góc D bằng bao nhiêu?",
+          options: ["A. 85°", "B. 95°", "C. 105°", "D. 115°"],
+          ans: 1,
+          explanation: "Áp dụng định lí tổng các góc tứ giác bằng 360°: ∠D = 360° − (110° + 80° + 75°) = 360° − 265° = 95°."
+        },
+        {
+          id: 7, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 7: Cho hình thang cân ABCD (AB song song CD) có ∠D = 70°. Số đo góc C bằng bao nhiêu?",
+          options: ["A. 110°", "B. 70°", "C. 140°", "D. 90°"],
+          ans: 1,
+          explanation: "Trong hình thang cân ABCD (AB song song CD), hai góc kề đáy CD bằng nhau nên ∠C = ∠D = 70°."
+        },
+        {
+          id: 8, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 8: Cho hình bình hành ABCD có ∠A = 65°. Số đo góc C bằng bao nhiêu?",
+          options: ["A. 115°", "B. 65°", "C. 130°", "D. 90°"],
+          ans: 1,
+          explanation: "Trong hình bình hành, các góc đối bằng nhau nên ∠C = ∠A = 65°."
+        },
+        {
+          id: 9, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 9: Cho hình bình hành ABCD có độ dài cạnh AB = 8 cm, cạnh BC = 5 cm. Chu vi của hình bình hành ABCD bằng bao nhiêu?",
+          options: ["A. 13 cm", "B. 26 cm", "C. 40 cm", "D. 20 cm"],
+          ans: 1,
+          explanation: "Chu vi hình bình hành ABCD bằng 2 × (AB + BC) = 2 × (8 + 5) = 26 cm."
+        },
+        {
+          id: 10, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 10: Dấu hiệu nào sau đây nhận biết một hình bình hành là Hình chữ nhật?",
+          options: [
+            "A. Hình bình hành có hai đường chéo vuông góc với nhau",
+            "B. Hình bình hành có hai đường chéo bằng nhau",
+            "C. Hình bình hành có hai cạnh kề bằng nhau",
+            "D. Hình bình hành có hai góc đối bằng nhau"
+          ],
+          ans: 1,
+          explanation: "Theo dấu hiệu nhận biết Hình chữ nhật: Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật."
+        },
+        {
+          id: 11, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 11: Dấu hiệu nào sau đây nhận biết một hình bình hành là Hình thoi?",
+          options: [
+            "A. Hình bình hành có một góc vuông",
+            "B. Hình bình hành có hai đường chéo bằng nhau",
+            "C. Hình bình hành có hai đường chéo vuông góc với nhau",
+            "D. Hình bình hành có hai cạnh đối bằng nhau"
+          ],
+          ans: 2,
+          explanation: "Theo dấu hiệu nhận biết Hình thoi: Hình bình hành có hai đường chéo vuông góc với nhau là hình thoi."
+        },
+        {
+          id: 12, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 12: Cho tam giác ABC vuông tại A, đường trung tuyến AM. Biết BC = 12 cm, độ dài đoạn thẳng AM bằng bao nhiêu?",
+          options: ["A. 12 cm", "B. 6 cm", "C. 24 cm", "D. 4 cm"],
+          ans: 1,
+          explanation: "Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền: AM = BC chia 2 = 12 chia 2 = 6 cm."
+        },
+        {
+          id: 13, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 13: Trong các khẳng định sau, khẳng định nào SAI?",
+          options: [
+            "A. Hình thang có hai đường chéo bằng nhau là hình thang cân",
+            "B. Tứ giác có ba góc vuông là hình chữ nhật",
+            "C. Hình thang có hai cạnh bên bằng nhau là hình thang cân",
+            "D. Hình bình hành có hai cạnh kề bằng nhau là hình thoi"
+          ],
+          ans: 2,
+          explanation: "Khẳng định C SAI vì hình thang có hai cạnh bên bằng nhau có thể là hình bình hành."
+        },
+        {
+          id: 14, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 14: Hình chữ nhật có thêm điều kiện nào sau đây thì trở thành Hình vuông?",
+          options: [
+            "A. Có hai đường chéo bằng nhau",
+            "B. Có bốn góc vuông",
+            "C. Có hai đường chéo vuông góc với nhau",
+            "D. Có hai đường chéo cắt nhau tại trung điểm mỗi đường"
+          ],
+          ans: 2,
+          explanation: "Dấu hiệu nhận biết Hình vuông: Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông."
+        },
+        {
+          id: 15, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 15: Hình thoi có thêm điều kiện nào sau đây thì trở thành Hình vuông?",
+          options: [
+            "A. Có hai đường chéo vuông góc",
+            "B. Có bốn cạnh bằng nhau",
+            "C. Có một góc vuông",
+            "D. Có một đường chéo là đường phân giác của một góc"
+          ],
+          ans: 2,
+          explanation: "Dấu hiệu nhận biết Hình vuông: Hình thoi có một góc vuông là hình vuông."
+        },
+        {
+          id: 16, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 16: Khẳng định sau Đúng hay Sai: \"Tứ giác có hai đường chéo vuông góc với nhau và bằng nhau là hình vuông.\"",
+          options: [
+            "A. Đúng, vì có đủ tính chất đường chéo của hình vuông",
+            "B. Sai, vì thiếu điều kiện hai đường chéo cắt nhau tại trung điểm của mỗi đường"
+          ],
+          ans: 1,
+          explanation: "Khẳng định trên là Sai! Tứ giác đó phải là hình bình hành trước (tức là hai đường chéo phải cắt nhau tại trung điểm của mỗi đường)."
+        },
+        {
+          id: 17, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 17: Cho hình chữ nhật ABCD có hai đường chéo AC và BD cắt nhau tại O. Biết AC = 10 cm, độ dài đoạn thẳng OB bằng bao nhiêu?",
+          options: ["A. 10 cm", "B. 5 cm", "C. 20 cm", "D. 2,5 cm"],
+          ans: 1,
+          explanation: "Trong hình chữ nhật, hai đường chéo bằng nhau và cắt nhau tại trung điểm mỗi đường nên BD = AC = 10 cm và OB = BD chia 2 = 5 cm."
+        },
+        {
+          id: 18, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 18: Cho hình thoi ABCD có ∠BAD = 100°. Số đo góc ∠BAC bằng bao nhiêu độ?",
+          options: ["A. 100°", "B. 50°", "C. 80°", "D. 40°"],
+          ans: 1,
+          explanation: "Trong hình thoi, đường chéo AC là đường phân giác của góc ∠BAD nên ∠BAC = ∠BAD chia 2 = 100° chia 2 = 50°."
+        },
+        {
+          id: 19, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 19: Tứ giác ABCD có AB song song CD và AB = CD. Tứ giác ABCD là hình gì?",
+          options: ["A. Hình bình hành", "B. Hình thang cân", "C. Hình chữ nhật", "D. Hình thoi"],
+          ans: 0,
+          explanation: "Theo dấu hiệu nhận biết Hình bình hành: Tứ giác có hai cạnh đối song song và bằng nhau là hình bình hành."
+        },
+        {
+          id: 20, level: "th", levelLabel: "Thông hiểu",
+          question: "Câu 20: Hình bình hành có các góc đối bằng nhau và tổng hai góc kề một cạnh bằng bao nhiêu độ?",
+          options: ["A. 90°", "B. 180°", "C. 270°", "D. 360°"],
+          ans: 1,
+          explanation: "Vì hai cạnh đối song song nên hai góc kề một cạnh của hình bình hành ở vị trí trong cùng phía, có tổng bằng 180°."
+        },
+
+        {
+          id: 21, level: "vd", levelLabel: "Vận dụng",
+          question: "Câu 21: Một khung cửa sổ hình chữ nhật có chiều rộng 0,8 m và chiều dài 1,5 m. Để kiểm tra khung cửa đã vuông góc chuẩn hình chữ nhật chưa, bác thợ mộc đo độ dài hai đường chéo. Nếu khung chuẩn hình chữ nhật thì mỗi đường chéo dài bao nhiêu mét?",
+          options: ["A. 1,7 m", "B. 2,3 m", "C. 1,3 m", "D. 1,9 m"],
+          ans: 0,
+          explanation: "Áp dụng định lí Pythagore vào tam giác vuông tạo bởi hai cạnh và đường chéo hình chữ nhật: d = √(0,8² + 1,5²) = √(0,64 + 2,25) = √2,89 = 1,7 m."
+        },
+        {
+          id: 22, level: "vd", levelLabel: "Vận dụng",
+          question: "Câu 22: Một hình thoi có độ dài hai đường chéo lần lượt là 6 cm và 8 cm. Chu vi của hình thoi đó bằng bao nhiêu cm?",
+          options: ["A. 14 cm", "B. 20 cm", "C. 28 cm", "D. 48 cm"],
+          ans: 1,
+          explanation: "Hai đường chéo hình thoi vuông góc và cắt nhau tại trung điểm mỗi đường nên nửa độ dài hai đường chéo là 3 cm và 4 cm. Cạnh hình thoi = √(3² + 4²) = 5 cm. Chu vi = 4 × 5 = 20 cm."
+        },
+        {
+          id: 23, level: "vd", levelLabel: "Vận dụng",
+          question: "Câu 23: Cho tam giác ABC cân tại A. Lấy điểm D trên cạnh AB, điểm E trên cạnh AC sao cho AD = AE. Tứ giác BDEC là hình gì?",
+          options: ["A. Hình bình hành", "B. Hình thang cân", "C. Hình thoi", "D. Hình chữ nhật"],
+          ans: 1,
+          explanation: "Vì tam giác ABC cân tại A và AD = AE nên tam giác ADE cân tại A, suy ra ∠ADE = ∠ABC nên DE song song BC (tứ giác BDEC là hình thang). Lại có ∠B = ∠C nên BDEC là Hình thang cân."
+        },
+        {
+          id: 24, level: "vd", levelLabel: "Vận dụng",
+          question: "Câu 24: Cho hình bình hành ABCD có hai đường chéo AC và BD cắt nhau tại O. Gọi M, N lần lượt là trung điểm của OA và OC. Tứ giác MBND là hình gì?",
+          options: ["A. Hình chữ nhật", "B. Hình bình hành", "C. Hình thoi", "D. Hình vuông"],
+          ans: 1,
+          explanation: "Vì ABCD là hình bình hành nên OA = OC và OB = OD. Do M, N là trung điểm OA, OC nên OM = ON. Tứ giác MBND có hai đường chéo MN và BD cắt nhau tại trung điểm O của mỗi đường nên là Hình bình hành."
+        },
+        {
+          id: 25, level: "vd", levelLabel: "Vận dụng",
+          question: "Câu 25: Cho hình chữ nhật ABCD có AB = 8 cm, BC = 6 cm. Gọi M là trung điểm của cạnh CD. Độ dài đoạn thẳng AM bằng bao nhiêu cm?",
+          options: ["A. 10 cm", "B. √52 cm", "C. 7 cm", "D. 5 cm"],
+          ans: 1,
+          explanation: "Vì ABCD là hình chữ nhật nên AD = BC = 6 cm, CD = AB = 8 cm và ∠D = 90°. M là trung điểm CD nên DM = 4 cm. Áp dụng Pythagore vào tam giác vuông ADM: AM = √(6² + 4²) = √52 cm."
+        },
+
+        {
+          id: 26, level: "vdc", levelLabel: "Vận dụng cao",
+          question: "Câu 26: Cho hình bình hành ABCD có AB = 2 AD. Gọi M, N lần lượt là trung điểm của AB và CD. Tứ giác AMND là hình gì?",
+          options: ["A. Hình chữ nhật", "B. Hình thoi", "C. Hình vuông", "D. Hình thang cân"],
+          ans: 1,
+          explanation: "Ta có AM bằng một nửa AB nên AM = AD và DN = AD, đồng thời AM song song DN nên AMND là hình bình hành. Lại có hai cạnh kề AM = AD nên AMND là Hình thoi."
+        },
+        {
+          id: 27, level: "vdc", levelLabel: "Vận dụng cao",
+          question: "Câu 27: Từ giả thiết của Câu 26 (Hình bình hành ABCD có AB = 2 AD; M, N là trung điểm AB, CD), gọi I là giao điểm của AN và DM, K là giao điểm của BN và CM. Tứ giác MINK là hình gì?",
+          options: ["A. Hình thoi", "B. Hình chữ nhật", "C. Hình thang cân", "D. Hình bình hành thường"],
+          ans: 1,
+          explanation: "AMND và BMNC đều là hình thoi nên hai đường chéo vuông góc: DM vuông góc AN tại I và CM vuông góc BN tại K, suy ra ∠MIN = ∠MKN = 90°. Tương tự MBND là hình bình hành nên ∠IMK = 90°. Tứ giác MINK có 3 góc vuông nên là Hình chữ nhật."
+        },
+        {
+          id: 28, level: "vdc", levelLabel: "Vận dụng cao",
+          question: "Câu 28: Cho tam giác ABC vuông tại A, đường cao AH. Từ H kẻ HD vuông góc AB (D thuộc AB) và HE vuông góc AC (E thuộc AC). Tứ giác ADHE là hình chữ nhật. Khi tam giác ABC có thêm điều kiện nào thì ADHE trở thành Hình vuông?",
+          options: [
+            "A. Tam giác ABC vuông cân tại A (AB = AC)",
+            "B. ∠B = 30°",
+            "C. BC = 10 cm",
+            "D. ∠C = 60°"
+          ],
+          ans: 0,
+          explanation: "Hình chữ nhật ADHE trở thành Hình vuông khi đường chéo AH là đường phân giác của góc ∠DAE (tức là đường cao AH đồng thời là đường phân giác của tam giác ABC), tương đương tam giác ABC vuông cân tại A (AB = AC)."
+        },
+        {
+          id: 29, level: "vdc", levelLabel: "Vận dụng cao",
+          question: "Câu 29: Cho hình vuông ABCD có cạnh bằng 4 cm. Lấy điểm E trên cạnh BC, điểm F trên cạnh CD sao cho BE = CF = 1 cm. Số đo góc ∠EAF bằng bao nhiêu độ?",
+          options: ["A. 30°", "B. 45°", "C. 60°", "D. 50°"],
+          ans: 1,
+          explanation: "Hai tam giác vuông ABE và BCF bằng nhau (cạnh - góc - cạnh) nên AE = BF và ∠BAE = ∠CBF, suy ra AE vuông góc BF. Chứng minh được tam giác AEF bằng tam giác AEF' nên ∠EAF = 90° chia 2 = 45°."
+        },
+        {
+          id: 30, level: "vdc", levelLabel: "Vận dụng cao",
+          question: "Câu 30: Cho tứ giác ABCD có hai đường chéo AC và BD vuông góc với nhau. Gọi M, N, P, Q lần lượt là trung điểm của các cạnh AB, BC, CD, DA. Tứ giác MNPQ là hình gì?",
+          options: ["A. Hình thoi", "B. Hình chữ nhật", "C. Hình thang cân", "D. Hình vuông"],
+          ans: 1,
+          explanation: "Sử dụng tính chất đường trung bình của tam giác: MN song song AC, PQ song song AC và MN = PQ bằng một nửa AC nên MNPQ là hình bình hành. Lại có MQ song song BD mà AC vuông góc BD nên MN vuông góc MQ (∠QMN = 90°). Hình bình hành MNPQ có một góc vuông nên là Hình chữ nhật."
+        }
+      ];
+
+      let quizUserAnswers = {};
+      let currentQuizFilter = "all";
+      let part4Score = 0;
+
+      function renderQuizJumpGrid() {
+        const jumpGrid = document.getElementById("quiz-jump-grid");
+        jumpGrid.innerHTML = "";
+        quizQuestions.forEach(function (q) {
+          const uAns = quizUserAnswers[q.id];
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "q-jump-btn";
+          if (uAns !== undefined) {
+            btn.classList.add(uAns === q.ans ? "q-ok" : "q-err");
+          }
+          btn.textContent = String(q.id);
+          btn.addEventListener("click", function () {
+            if (currentQuizFilter !== "all") {
+              currentQuizFilter = "all";
+              document.querySelectorAll(".filter-pill").forEach(function (p) {
+                p.classList.toggle("active", p.getAttribute("data-level") === "all");
+              });
+              renderQuiz();
+            }
+            const targetEl = document.getElementById("quiz-card-" + q.id);
+            if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+          jumpGrid.appendChild(btn);
+        });
+      }
+
+      function getLevelBadgeStyle(level) {
+        if (level === "nb") return "background:#d1fae5; color:#065f46;";
+        if (level === "th") return "background:#dbeafe; color:#1e40af;";
+        if (level === "vd") return "background:#fef3c7; color:#92400e;";
+        return "background:#f3e8ff; color:#6b21a8;";
+      }
+
+      function renderQuiz() {
+        renderQuizJumpGrid();
+        const container = document.getElementById("quiz-container");
+        container.innerHTML = "";
+
+        const filtered = (currentQuizFilter === "all")
+          ? quizQuestions
+          : quizQuestions.filter(function (q) { return q.level === currentQuizFilter; });
+
+        filtered.forEach(function (q) {
+          const uAns = quizUserAnswers[q.id];
+          const answered = (uAns !== undefined);
+
+          const card = document.createElement("div");
+          card.className = "quiz-card";
+          card.id = "quiz-card-" + q.id;
+
+          const topRow = document.createElement("div");
+          topRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; flex-wrap:wrap;";
+
+          const lvlBadge = document.createElement("span");
+          lvlBadge.style.cssText = "display:inline-block; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; " + getLevelBadgeStyle(q.level);
+          lvlBadge.textContent = "Mức độ: " + q.levelLabel;
+          topRow.appendChild(lvlBadge);
+
+          const ptsBadge = document.createElement("span");
+          ptsBadge.style.cssText = "font-size:12px; color:#64748b; font-weight:600;";
+          ptsBadge.textContent = "+2 điểm";
+          topRow.appendChild(ptsBadge);
+          card.appendChild(topRow);
+
+          const qText = document.createElement("p");
+          qText.style.cssText = "font-size:15.5px; font-weight:700; color:#0f172a; line-height:1.5;";
+          qText.textContent = q.question;
+          card.appendChild(qText);
+
+          const optsGrid = document.createElement("div");
+          optsGrid.className = "quiz-options-grid";
+
+          q.options.forEach(function (optText, idx) {
+            const optBtn = document.createElement("button");
+            optBtn.type = "button";
+            optBtn.className = "quiz-opt-choice";
+            if (answered) {
+              optBtn.disabled = true;
+              if (idx === q.ans) optBtn.classList.add("chosen-correct");
+              else if (idx === uAns) optBtn.classList.add("chosen-wrong");
+            }
+            optBtn.textContent = optText;
+            optBtn.addEventListener("click", function () {
+              if (quizUserAnswers[q.id] !== undefined) return;
+              quizUserAnswers[q.id] = idx;
+              if (idx === q.ans) playSound("success");
+              else playSound("error");
+              recalcPart4Score();
+              renderQuiz();
+            });
+            optsGrid.appendChild(optBtn);
+          });
+          card.appendChild(optsGrid);
+
+          if (answered) {
+            const isOk = (uAns === q.ans);
+            const expDiv = document.createElement("div");
+            expDiv.style.cssText = "margin-top:14px; padding:14px; border-radius:14px; font-size:14px; line-height:1.55; background:" +
+              (isOk ? "#ecfdf5; border:1px solid #10b981; color:#064e3b;" : "#fff1f2; border:1px solid #f43f5e; color:#881337;");
+
+            const statusHead = document.createElement("div");
+            statusHead.style.cssText = "font-weight:800; margin-bottom:4px;";
+            statusHead.textContent = isOk ? "🎉 Chính xác! (+2 điểm)" : "❌ Chưa chính xác! Hãy xem lời giải chi tiết:";
+            expDiv.appendChild(statusHead);
+
+            const expBody = document.createElement("div");
+            expBody.textContent = q.explanation;
+            expDiv.appendChild(expBody);
+
+            card.appendChild(expDiv);
+          }
+
+          container.appendChild(card);
+        });
+      }
+
+      function recalcPart4Score() {
+        let correctCount = 0;
+        quizQuestions.forEach(function (q) {
+          if (quizUserAnswers[q.id] === q.ans) correctCount++;
+        });
+        part4Score = correctCount * 2;
+        document.getElementById("part4-score").textContent = String(part4Score);
+        document.getElementById("part4-correct-count").textContent = String(correctCount);
+        updateGlobalScore();
+      }
+
+      document.querySelectorAll(".filter-pill").forEach(function (pill) {
+        pill.addEventListener("click", function () {
+          currentQuizFilter = pill.getAttribute("data-level");
+          document.querySelectorAll(".filter-pill").forEach(function (p) {
+            p.classList.remove("active");
+          });
+          pill.classList.add("active");
+          renderQuiz();
+        });
+      });
+
+      // =====================================================================
+      // 10. TỔNG HỢP ĐIỂM VÀ BẢNG TỔNG KẾT
+      // =====================================================================
+      function updateGlobalScore() {
+        const total = part3Score + part4Score;
+        document.getElementById("header-score").textContent = String(total);
+      }
+
+      document.getElementById("open-summary-btn").addEventListener("click", function () {
+        const total = part3Score + part4Score;
+        document.getElementById("summary-total-score").textContent = String(total);
+        document.getElementById("summary-p3").textContent = String(part3Score);
+        document.getElementById("summary-p4").textContent = String(part4Score);
+        document.getElementById("summary-progress-bar").style.width = total + "%";
+
+        const stats = { nb: 0, th: 0, vd: 0, vdc: 0 };
+        quizQuestions.forEach(function (q) {
+          if (quizUserAnswers[q.id] === q.ans) stats[q.level]++;
+        });
+        document.getElementById("stat-nb").textContent = String(stats.nb);
+        document.getElementById("stat-th").textContent = String(stats.th);
+        document.getElementById("stat-vd").textContent = String(stats.vd);
+        document.getElementById("stat-vdc").textContent = String(stats.vdc);
+
+        const iconEl = document.getElementById("summary-badge-icon");
+        const rankEl = document.getElementById("summary-rank-title");
+        const adviceEl = document.getElementById("summary-advice");
+
+        if (total >= 85) {
+          playSound("success");
+          iconEl.textContent = "👑";
+          rankEl.textContent = "DANH HIỆU: BẬC THẦY HÌNH HỌC TỨ GIÁC";
+          adviceEl.textContent = "Nhận xét xuất sắc: Em đã nắm vững toàn bộ sơ đồ biến đổi, tính chất và dấu hiệu nhận biết của các loại tứ giác trong chương trình Toán 8, làm tốt cả các câu Vận dụng và Vận dụng cao!";
+        } else if (total >= 50) {
+          iconEl.textContent = "🌟";
+          rankEl.textContent = "DANH HIỆU: NHÀ KHÁM PHÁ TÍCH CỰC";
+          adviceEl.textContent = "Nhận xét: Nền tảng kiến thức Nhận biết và Thông hiểu của em khá tốt! Hãy xem lại lời giải chi tiết ở các câu Vận dụng và Vận dụng cao ở chặng 4. Về đích để đạt điểm tối đa nhé.";
+        } else {
+          iconEl.textContent = "📘";
+          rankEl.textContent = "DANH HIỆU: NGƯỜI KHỞI HÀNH KIÊN TRÌ";
+          adviceEl.textContent = "Lời khuyên ôn tập: Em hãy quay lại chặng 1. Khởi động để đọc kỹ định nghĩa từng hình và thực hành 20 thử thách trên mô hình động ở chặng 2. Khám phá trước khi thử sức lại nhé!";
+        }
+
+        switchTab("summary");
+      });
+
+      document.getElementById("reset-all-btn").addEventListener("click", function () {
+        resetDragGame();
+        labAnswers = {};
+        currentLabIdx = 0;
+        renderLabChallenge();
+        quizUserAnswers = {};
+        recalcPart4Score();
+        renderQuiz();
+        updateGlobalScore();
+        switchTab("home");
+      });
+
+      // Khởi chạy dữ liệu ban đầu
+      renderLabChallenge();
+      shuffleCardsDeck();
+      renderDragGame();
+      renderQuiz();
+      resizeGeoCanvas();
+      setGeoPreset("parallelogram");
+    });
+  </script>
+</body>
+</html>
